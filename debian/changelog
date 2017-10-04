@@ -1,4 +1,10 @@
-linux (4.14~rc3-1~exp1) experimental; urgency=medium
+linux (4.14~rc1-1~linaro1) stretch; urgency=medium
+
+  * Stretch backport for RPK
+
+ -- Riku Voipio <riku.voipio@linaro.org>  Wed, 04 Oct 2017 11:23:01 +0300
+
+linux (4.14~rc1-1~exp1) experimental; urgency=medium
 
   * New upstream release candidate
 
