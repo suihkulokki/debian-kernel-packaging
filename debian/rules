@@ -2,10 +2,10 @@
 
 SHELL    := sh -e
 DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
-SOURCE := $(shell dpkg-parsechangelog | sed -ne 's,^Source: *\(.*\)$$,\1,p')
-VERSION := $(shell dpkg-parsechangelog | sed -ne 's,^Version: *\(.*\)$$,\1,p')
+SOURCE := $(shell dpkg-parsechangelog -SSource)
+VERSION := $(shell dpkg-parsechangelog -SVersion)
 VERSION_UPSTREAM := $(shell echo "$(VERSION)" | sed -e 's,-[^-]*$$,,')
-VERSION_BINNMU := $(shell echo "$(VERSION)" | sed -ne 's,.*+b\(.*\)$$,\1,p')
+VERSION_BINNMU := $(shell echo "$(VERSION)" | sed -rne 's,.*\+b([0-9]+)$$,\1,p')
 
 include debian/rules.defs
 
@@ -16,11 +16,6 @@ ifdef DEBIAN_KERNEL_JOBS
   MAKEFLAGS += -j$(DEBIAN_KERNEL_JOBS)
 endif
 BUILD_STAGE1 := $(filter stage1,$(DEB_BUILD_PROFILES))
-ifneq (,$(filter nodoc,$(DEB_BUILD_PROFILES)))
-# This only disables building the linux-doc and linux-manual packages.
-# The rules for tools packages check separately for the 'nodoc' profile.
-  MAKEFLAGS += DO_DOCS=False
-endif
 ifneq (,$(filter pkg.linux.notools,$(DEB_BUILD_PROFILES)))
   MAKEFLAGS += DO_TOOLS=False
 endif
@@ -105,7 +100,8 @@ else
 endif
 
 debian/control-real: debian/bin/gencontrol.py $(CONTROL_FILES)
-	$<
+# Hash randomisation makes the pickled config unreproducible
+	PYTHONHASHSEED=0 $<
 	md5sum $^ > debian/control.md5sum
 	@echo
 	@echo This target is made to fail intentionally, to make sure
