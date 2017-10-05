@@ -528,6 +528,7 @@ CONFIG_E100=m
 ## file: drivers/net/ethernet/marvell/Kconfig
 ##
 CONFIG_MVNETA=m
+CONFIG_MVPP2=m
 
 ##
 ## file: drivers/net/ethernet/natsemi/Kconfig
