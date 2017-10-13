@@ -442,7 +442,6 @@ class Package(_ControlFileDict):
         ('Uploaders', str),
         ('Standards-Version', str),
         ('Build-Depends', PackageRelation),
-        ('Build-Depends-Arch', PackageRelation),
         ('Build-Depends-Indep', PackageRelation),
         ('Provides', PackageRelation),
         ('Pre-Depends', PackageRelation),
