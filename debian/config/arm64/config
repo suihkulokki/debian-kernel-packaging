@@ -144,6 +144,11 @@ CONFIG_MSM_MMCC_8996=y
 CONFIG_CPUFREQ_DT=m
 
 ##
+## file: drivers/cpufreq/Kconfig.arm
+##
+CONFIG_ACPI_CPPC_CPUFREQ=y
+
+##
 ## file: drivers/cpuidle/Kconfig.arm
 ##
 CONFIG_ARM_CPUIDLE=y
