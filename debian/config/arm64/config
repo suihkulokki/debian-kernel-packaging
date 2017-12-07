@@ -565,6 +565,12 @@ CONFIG_EPIC100=m
 CONFIG_SMSC911X=m
 
 ##
+## file: drivers/net/ethernet/socionext/Kconfig
+##
+CONFIG_NET_VENDOR_SNI=y
+CONFIG_SNI_NETSEC=m
+
+##
 ## file: drivers/net/ethernet/stmicro/stmmac/Kconfig
 ##
 CONFIG_STMMAC_ETH=m
