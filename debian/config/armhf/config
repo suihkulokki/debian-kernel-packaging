@@ -212,7 +212,6 @@ CONFIG_ARM_EXYNOS_CPUIDLE=y
 ##
 ## file: drivers/crypto/Kconfig
 ##
-# CONFIG_CRYPTO_DEV_MV_CESA is not set
 CONFIG_CRYPTO_DEV_MARVELL_CESA=m
 CONFIG_CRYPTO_DEV_OMAP_SHAM=m
 CONFIG_CRYPTO_DEV_OMAP_AES=m
@@ -341,6 +340,15 @@ CONFIG_DRM_ROCKCHIP=m
 CONFIG_ROCKCHIP_ANALOGIX_DP=y
 CONFIG_ROCKCHIP_DW_HDMI=y
 CONFIG_ROCKCHIP_DW_MIPI_DSI=y
+
+##
+## file: drivers/gpu/drm/sun4i/Kconfig
+##
+CONFIG_DRM_SUN4I=m
+CONFIG_DRM_SUN4I_HDMI=m
+CONFIG_DRM_SUN4I_HDMI_CEC=y
+CONFIG_DRM_SUN4I_BACKEND=m
+CONFIG_DRM_SUN8I_MIXER=m
 
 ##
 ## file: drivers/gpu/drm/tegra/Kconfig
@@ -1063,6 +1071,11 @@ CONFIG_ROCKCHIP_THERMAL=m
 CONFIG_ARMADA_THERMAL=y
 
 ##
+## file: drivers/thermal/broadcom/Kconfig
+##
+CONFIG_BCM2835_THERMAL=m
+
+##
 ## file: drivers/thermal/tegra/Kconfig
 ##
 CONFIG_TEGRA_SOCTHERM=y
@@ -1205,11 +1218,6 @@ CONFIG_USB_MXS_PHY=m
 CONFIG_BACKLIGHT_PWM=m
 CONFIG_BACKLIGHT_PANDORA=m
 CONFIG_BACKLIGHT_GPIO=m
-
-##
-## file: drivers/video/console/Kconfig
-##
-CONFIG_FRAMEBUFFER_CONSOLE=y
 
 ##
 ## file: drivers/video/fbdev/Kconfig

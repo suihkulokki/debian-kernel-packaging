@@ -27,6 +27,7 @@ CONFIG_DMI=y
 CONFIG_GART_IOMMU=y
 CONFIG_SCHED_SMT=y
 CONFIG_SCHED_MC=y
+CONFIG_SCHED_MC_PRIO=y
 CONFIG_X86_REROUTE_FOR_BROKEN_BOOT_IRQS=y
 CONFIG_X86_MCE=y
 CONFIG_X86_MCE_INTEL=y
@@ -55,7 +56,6 @@ CONFIG_X86_SMAP=y
 CONFIG_X86_INTEL_MPX=y
 CONFIG_EFI=y
 CONFIG_EFI_STUB=y
-CONFIG_EFI_SECURE_BOOT_LOCK_DOWN=y
 CONFIG_SECCOMP=y
 CONFIG_KEXEC=y
 CONFIG_CRASH_DUMP=y
@@ -267,8 +267,6 @@ CONFIG_KS0108_DELAY=2
 ## file: drivers/block/Kconfig
 ##
 CONFIG_BLK_DEV_FD=m
-CONFIG_BLK_CPQ_CISS_DA=m
-CONFIG_CISS_SCSI_TAPE=y
 CONFIG_BLK_DEV_DAC960=m
 CONFIG_BLK_DEV_UMEM=m
 CONFIG_BLK_DEV_SX8=m
@@ -501,12 +499,6 @@ CONFIG_DRM_SIS=m
 ## file: drivers/gpu/drm/amd/acp/Kconfig
 ##
 CONFIG_DRM_AMD_ACP=y
-
-##
-## file: drivers/gpu/drm/amd/amdgpu/Kconfig
-##
-# CONFIG_DRM_AMDGPU_CIK is not set
-CONFIG_DRM_AMDGPU_USERPTR=y
 
 ##
 ## file: drivers/gpu/drm/amd/amdkfd/Kconfig
@@ -940,7 +932,6 @@ CONFIG_VMWARE_VMCI=m
 ## file: drivers/mmc/Kconfig
 ##
 CONFIG_MMC=m
-# CONFIG_MMC_DEBUG is not set
 
 ##
 ## file: drivers/mmc/core/Kconfig
@@ -950,6 +941,7 @@ CONFIG_MMC_BLOCK=m
 ##
 ## file: drivers/mmc/host/Kconfig
 ##
+# CONFIG_MMC_DEBUG is not set
 CONFIG_MMC_SDHCI_ACPI=m
 
 ##
@@ -1206,19 +1198,6 @@ CONFIG_ROADRUNNER=m
 CONFIG_HYPERV_NET=m
 
 ##
-## file: drivers/net/irda/Kconfig
-##
-CONFIG_IRTTY_SIR=m
-CONFIG_USB_IRDA=m
-CONFIG_SIGMATEL_FIR=m
-CONFIG_NSC_FIR=m
-CONFIG_WINBOND_FIR=m
-CONFIG_SMC_IRCC_FIR=m
-CONFIG_ALI_FIR=m
-CONFIG_VLSI_FIR=m
-CONFIG_VIA_FIR=m
-
-##
 ## file: drivers/net/plip/Kconfig
 ##
 CONFIG_PLIP=m
@@ -1305,7 +1284,6 @@ CONFIG_BTT=y
 ##
 ## file: drivers/pci/Kconfig
 ##
-CONFIG_HT_IRQ=y
 CONFIG_PCI_PRI=y
 CONFIG_PCI_PASID=y
 
@@ -1597,7 +1575,6 @@ CONFIG_LNET_XPRT_IB=m
 ## file: drivers/staging/lustre/lustre/Kconfig
 ##
 CONFIG_LUSTRE_FS=m
-CONFIG_LUSTRE_OBD_MAX_IOCTL_BUFFER=8192
 # CONFIG_LUSTRE_DEBUG_EXPENSIVE_CHECK is not set
 
 ##
@@ -1633,6 +1610,11 @@ CONFIG_RTL8192E=m
 ## file: drivers/staging/rtl8192u/Kconfig
 ##
 CONFIG_RTL8192U=m
+
+##
+## file: drivers/staging/rtl8723bs/Kconfig
+##
+CONFIG_RTL8723BS=m
 
 ##
 ## file: drivers/staging/rts5208/Kconfig
@@ -1741,16 +1723,6 @@ CONFIG_USB_SL811_HCD=m
 CONFIG_USB_SL811_CS=m
 
 ##
-## file: drivers/usb/usbip/Kconfig
-##
-CONFIG_USBIP_CORE=m
-CONFIG_USBIP_VHCI_HCD=m
-CONFIG_USBIP_VHCI_HC_PORTS=31
-CONFIG_USBIP_VHCI_NR_HCS=8
-CONFIG_USBIP_HOST=m
-# CONFIG_USBIP_DEBUG is not set
-
-##
 ## file: drivers/vfio/Kconfig
 ##
 CONFIG_VFIO=m
@@ -1765,7 +1737,6 @@ CONFIG_VFIO_PCI_VGA=y
 ## file: drivers/video/console/Kconfig
 ##
 CONFIG_VGA_CONSOLE=y
-CONFIG_FRAMEBUFFER_CONSOLE=y
 
 ##
 ## file: drivers/video/fbdev/Kconfig
@@ -1949,30 +1920,6 @@ CONFIG_IPX=m
 # CONFIG_IPX_INTERN is not set
 
 ##
-## file: net/irda/Kconfig
-##
-CONFIG_IRDA=m
-# CONFIG_IRDA_ULTRA is not set
-CONFIG_IRDA_CACHE_LAST_LSAP=y
-CONFIG_IRDA_FAST_RR=y
-# CONFIG_IRDA_DEBUG is not set
-
-##
-## file: net/irda/ircomm/Kconfig
-##
-CONFIG_IRCOMM=m
-
-##
-## file: net/irda/irlan/Kconfig
-##
-CONFIG_IRLAN=m
-
-##
-## file: net/irda/irnet/Kconfig
-##
-CONFIG_IRNET=m
-
-##
 ## file: net/lapb/Kconfig
 ##
 CONFIG_LAPB=m
@@ -1986,6 +1933,7 @@ CONFIG_NFC_HCI=m
 ## file: net/vmw_vsock/Kconfig
 ##
 CONFIG_VMWARE_VMCI_VSOCKETS=m
+CONFIG_HYPERV_VSOCKETS=m
 
 ##
 ## file: sound/drivers/Kconfig
@@ -2057,15 +2005,13 @@ CONFIG_SND_SOC=m
 CONFIG_SND_SOC_AMD_ACP=m
 
 ##
-## file: sound/soc/intel/Kconfig
+## file: sound/soc/intel/boards/Kconfig
 ##
 CONFIG_SND_SOC_INTEL_HASWELL_MACH=m
-# CONFIG_SND_SOC_INTEL_BXT_DA7219_MAX98357A_MACH is not set
-# CONFIG_SND_SOC_INTEL_BXT_RT298_MACH is not set
-# CONFIG_SND_SOC_INTEL_BYT_RT5640_MACH is not set
-CONFIG_SND_SOC_INTEL_BYT_MAX98090_MACH=m
 CONFIG_SND_SOC_INTEL_BDW_RT5677_MACH=m
 CONFIG_SND_SOC_INTEL_BROADWELL_MACH=m
+CONFIG_SND_SOC_INTEL_BYT_MAX98090_MACH=m
+# CONFIG_SND_SOC_INTEL_BYT_RT5640_MACH is not set
 CONFIG_SND_SOC_INTEL_BYTCR_RT5640_MACH=m
 CONFIG_SND_SOC_INTEL_BYTCR_RT5651_MACH=m
 CONFIG_SND_SOC_INTEL_CHT_BSW_RT5672_MACH=m
@@ -2074,6 +2020,8 @@ CONFIG_SND_SOC_INTEL_CHT_BSW_MAX98090_TI_MACH=m
 CONFIG_SND_SOC_INTEL_SKL_RT286_MACH=m
 CONFIG_SND_SOC_INTEL_SKL_NAU88L25_SSM4567_MACH=m
 CONFIG_SND_SOC_INTEL_SKL_NAU88L25_MAX98357A_MACH=m
+# CONFIG_SND_SOC_INTEL_BXT_DA7219_MAX98357A_MACH is not set
+# CONFIG_SND_SOC_INTEL_BXT_RT298_MACH is not set
 
 ##
 ## file: sound/x86/Kconfig
