@@ -1,11 +1,11 @@
 # Changes to support package build system
-debian/version.patch
+#debian/version.patch
 debian/uname-version-timestamp.patch
 debian/kernelvariables.patch
-debian/gitignore.patch
-debian/mips-disable-werror.patch
-debian/arch-sh4-fix-uimage-build.patch
-debian/powerpcspe-omit-uimage.patch
+#debian/gitignore.patch
+#debian/mips-disable-werror.patch
+#debian/arch-sh4-fix-uimage-build.patch
+#debian/powerpcspe-omit-uimage.patch
 features/all/Kbuild-kconfig-Verbose-version-of-listnewconfig.patch
 debian/modpost-symbol-prefix.patch
 debian/tools-perf-version.patch
@@ -59,7 +59,7 @@ bugfix/x86/platform-x86-ideapad-laptop-add-y520-15ikbn-to-no_hw.patch
 bugfix/x86/platform-x86-ideapad-laptop-add-y720-15ikbn-to-no_hw.patch
 bugfix/x86/platform-x86-ideapad-laptop-add-ideapad-v510-15ikb-t.patch
 bugfix/x86/platform-x86-ideapad-laptop-add-several-models-to-no.patch
-debian/revert-gpu-host1x-add-iommu-support.patch
+#debian/revert-gpu-host1x-add-iommu-support.patch
 bugfix/x86/perf-tools-fix-unwind-build-on-i386.patch
 bugfix/sh/sh-boot-do-not-use-hyphen-in-exported-variable-name.patch
 bugfix/x86/mmap-remember-the-map_fixed-flag-as-vm_fixed.patch
@@ -73,12 +73,12 @@ features/x86/x86-make-x32-syscall-support-conditional.patch
 
 # Miscellaneous bug fixes
 bugfix/all/kbuild-use-nostdinc-in-compile-tests.patch
-bugfix/all/disable-some-marvell-phys.patch
+#bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/partially-revert-usb-kconfig-using-select-for-usb_co.patch
 bugfix/all/kbuild-include-addtree-remove-quotes-before-matching-path.patch
 debian/revert-objtool-fix-config_stack_validation-y-warning.patch
-bugfix/all/crypto-ecc-fix-null-pointer-deref.-on-no-default_rng.patch
+#bugfix/all/crypto-ecc-fix-null-pointer-deref.-on-no-default_rng.patch
 
 # Miscellaneous features
 
