@@ -1,5 +1,8 @@
 #include <kernel-image>
 
+# MFD
+drivers/mfd/**
+
 # Regulators
 drivers/regulator/**
 
@@ -8,3 +11,6 @@ drivers/soc/**
 
 # Watchdog needed for reboot
 sunxi_wdt ?
+
+# NIC sata USB on Armada 8K
+phy-mvebu-cp110-comphy
