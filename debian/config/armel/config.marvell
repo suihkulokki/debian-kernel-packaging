@@ -196,6 +196,11 @@ CONFIG_BT_HCIBFUSB=m
 CONFIG_BT_HCIVHCI=m
 
 ##
+## file: drivers/connector/Kconfig
+##
+CONFIG_CONNECTOR=m
+
+##
 ## file: drivers/cpuidle/Kconfig
 ##
 CONFIG_CPU_IDLE=y
@@ -208,7 +213,6 @@ CONFIG_ARM_KIRKWOOD_CPUIDLE=y
 ##
 ## file: drivers/crypto/Kconfig
 ##
-# CONFIG_CRYPTO_DEV_MV_CESA is not set
 CONFIG_CRYPTO_DEV_MARVELL_CESA=m
 
 ##
@@ -666,10 +670,22 @@ CONFIG_USB_UHCI_HCD=m
 CONFIG_USB_SL811_HCD=m
 
 ##
+## file: drivers/usb/misc/Kconfig
+##
+#. Selects BACKLIGHT_CLASS_DEVICE which is always built-in
+# CONFIG_USB_APPLEDISPLAY is not set
+
+##
+## file: drivers/video/backlight/Kconfig
+##
+# CONFIG_BACKLIGHT_CLASS_DEVICE is not set
+
+##
 ## file: drivers/video/console/Kconfig
 ##
 # CONFIG_VGA_CONSOLE is not set
-CONFIG_FRAMEBUFFER_CONSOLE=m
+#. We want to enable this as a module, but that's not currently possible
+# CONFIG_FRAMEBUFFER_CONSOLE is not set
 
 ##
 ## file: drivers/video/fbdev/Kconfig
@@ -708,11 +724,14 @@ CONFIG_NLS=m
 #. Saves about 7K
 # CONFIG_MEMCG is not set
 # CONFIG_CFS_BANDWIDTH is not set
-# CONFIG_CHECKPOINT_RESTORE is not set
+# CONFIG_CGROUP_BPF is not set
 ## choice: Compiler optimization level
 CONFIG_CC_OPTIMIZE_FOR_SIZE=y
 ## end choice
+# CONFIG_CHECKPOINT_RESTORE is not set
 # CONFIG_USERFAULTFD is not set
+# CONFIG_SLUB_DEBUG is not set
+# CONFIG_SLAB_FREELIST_HARDENED is not set
 # CONFIG_PROFILING is not set
 # CONFIG_MODULE_SIG is not set
 
@@ -798,9 +817,9 @@ CONFIG_IPV6=m
 CONFIG_PACKET=m
 
 ##
-## file: security/integrity/ima/Kconfig
+## file: security/integrity/Kconfig
 ##
-# CONFIG_IMA is not set
+# CONFIG_INTEGRITY is not set
 
 ##
 ## file: sound/soc/Kconfig

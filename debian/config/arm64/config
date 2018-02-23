@@ -19,12 +19,12 @@ CONFIG_ARMV8_DEPRECATED=y
 CONFIG_SWP_EMULATION=y
 CONFIG_CP15_BARRIER_EMULATION=y
 CONFIG_SETEND_EMULATION=y
+CONFIG_ARM64_PMEM=y
 CONFIG_RANDOMIZE_BASE=y
 CONFIG_RANDOMIZE_MODULE_REGION_FULL=y
 CONFIG_ARM64_ACPI_PARKING_PROTOCOL=y
 CONFIG_EFI_SECURE_BOOT_LOCK_DOWN=y
 CONFIG_COMPAT=y
-CONFIG_ARM64_PMEM=y
 
 ##
 ## file: arch/arm64/crypto/Kconfig
@@ -68,6 +68,10 @@ CONFIG_ARCH_XGENE=y
 ##
 CONFIG_ACPI=y
 CONFIG_ACPI_NUMA=y
+
+##
+## file: drivers/acpi/nfit/Kconfig
+##
 CONFIG_ACPI_NFIT=y
 
 ##
@@ -108,7 +112,7 @@ CONFIG_TEGRA_ACONNECT=y
 CONFIG_HW_RANDOM_BCM2835=m
 CONFIG_HW_RANDOM_HISI=m
 CONFIG_HW_RANDOM_MSM=m
-CONFIG_HW_RANDOM_OMAP=m
+# CONFIG_HW_RANDOM_OMAP is not set
 CONFIG_HW_RANDOM_XGENE=m
 CONFIG_HW_RANDOM_MESON=m
 CONFIG_HW_RANDOM_CAVIUM=m
@@ -123,6 +127,7 @@ CONFIG_IPMI_SSIF=m
 ##
 ## file: drivers/clk/Kconfig
 ##
+CONFIG_COMMON_CLK_HI655X=y
 CONFIG_COMMON_CLK_RK808=y
 CONFIG_COMMON_CLK_XGENE=y
 
@@ -149,7 +154,7 @@ CONFIG_CPUFREQ_DT=m
 ##
 ## file: drivers/cpufreq/Kconfig.arm
 ##
-CONFIG_ACPI_CPPC_CPUFREQ=y
+CONFIG_ACPI_CPPC_CPUFREQ=m
 
 ##
 ## file: drivers/cpuidle/Kconfig.arm
@@ -321,6 +326,7 @@ CONFIG_I2C_BCM2835=m
 CONFIG_I2C_DESIGNWARE_PLATFORM=m
 CONFIG_I2C_MESON=m
 CONFIG_I2C_MV64XXX=m
+CONFIG_I2C_PXA=m
 CONFIG_I2C_QUP=m
 CONFIG_I2C_RK3X=m
 CONFIG_I2C_TEGRA=m
@@ -603,6 +609,11 @@ CONFIG_MESON_GXL_PHY=m
 CONFIG_WCN36XX=m
 
 ##
+## file: drivers/net/wireless/broadcom/brcm80211/Kconfig
+##
+CONFIG_BRCMFMAC_SDIO=y
+
+##
 ## file: drivers/net/wireless/ti/Kconfig
 ##
 CONFIG_WLAN_VENDOR_TI=y
@@ -636,6 +647,7 @@ CONFIG_WLCORE_SDIO=m
 ## file: drivers/nvmem/Kconfig
 ##
 CONFIG_QCOM_QFPROM=m
+CONFIG_NVMEM_SUNXI_SID=m
 
 ##
 ## file: drivers/pci/dwc/Kconfig
@@ -785,12 +797,6 @@ CONFIG_QCOM_Q6V5_PIL=m
 ## file: drivers/reset/Kconfig
 ##
 CONFIG_RESET_CONTROLLER=y
-CONFIG_RESET_MESON=y
-
-##
-## file: drivers/reset/hisilicon/Kconfig
-##
-CONFIG_COMMON_RESET_HI6220=m
 
 ##
 ## file: drivers/rpmsg/Kconfig
@@ -872,6 +878,11 @@ CONFIG_SPMI=y
 CONFIG_SPMI_MSM_PMIC_ARB=y
 
 ##
+## file: drivers/staging/rtl8723bs/Kconfig
+##
+CONFIG_RTL8723BS=m
+
+##
 ## file: drivers/tee/Kconfig
 ##
 CONFIG_TEE=m
@@ -891,6 +902,11 @@ CONFIG_ARMADA_THERMAL=m
 CONFIG_QCOM_SPMI_TEMP_ALARM=m
 
 ##
+## file: drivers/thermal/broadcom/Kconfig
+##
+CONFIG_BCM2835_THERMAL=m
+
+##
 ## file: drivers/thermal/qcom/Kconfig
 ##
 CONFIG_QCOM_TSENS=m
@@ -899,6 +915,11 @@ CONFIG_QCOM_TSENS=m
 ## file: drivers/thermal/tegra/Kconfig
 ##
 CONFIG_TEGRA_SOCTHERM=y
+
+##
+## file: drivers/tty/serdev/Kconfig
+##
+CONFIG_SERIAL_DEV_BUS=m
 
 ##
 ## file: drivers/tty/serial/Kconfig
@@ -964,12 +985,10 @@ CONFIG_USB_GADGET=m
 ##
 ## file: drivers/usb/host/Kconfig
 ##
-#. xhci-platform apparently does not build as module, so xhci_hcd can't be either
 CONFIG_USB_XHCI_HCD=m
 CONFIG_USB_XHCI_PLATFORM=m
 CONFIG_USB_XHCI_TEGRA=m
 CONFIG_USB_EHCI_HCD=m
-CONFIG_USB_EHCI_MSM=m
 CONFIG_USB_EHCI_TEGRA=m
 CONFIG_USB_EHCI_HCD_PLATFORM=m
 CONFIG_USB_OHCI_HCD=m
@@ -1014,11 +1033,6 @@ CONFIG_VFIO_PCI=m
 ##
 CONFIG_BACKLIGHT_GENERIC=m
 CONFIG_BACKLIGHT_LP855X=m
-
-##
-## file: drivers/video/console/Kconfig
-##
-CONFIG_FRAMEBUFFER_CONSOLE=y
 
 ##
 ## file: drivers/video/fbdev/Kconfig
