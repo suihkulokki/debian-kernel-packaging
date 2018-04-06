@@ -25,11 +25,11 @@ Signed-off-by: Kevin Hilman <khilman@baylibre.com>
  arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts b/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
-index 0bc0f65e4f37..54954b314a45 100644
---- a/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
-+++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
-@@ -274,7 +274,7 @@
+Index: debian-kernel-packaging/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
+===================================================================
+--- debian-kernel-packaging.orig/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
++++ debian-kernel-packaging/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
+@@ -310,7 +310,7 @@
  	pinctrl-names = "default", "clk-gate";
  
  	bus-width = <8>;
@@ -38,6 +38,3 @@ index 0bc0f65e4f37..54954b314a45 100644
  	non-removable;
  	disable-wp;
  	cap-mmc-highspeed;
--- 
-2.11.0
-

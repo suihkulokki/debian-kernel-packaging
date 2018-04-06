@@ -1,4 +1,4 @@
-linux (4.16~rc7-1) stretch; urgency=medium
+linux (4.16-0.1) stretch; urgency=medium
 
   * Non-maintainer upload.
   * Linaro backport and sync with debian
