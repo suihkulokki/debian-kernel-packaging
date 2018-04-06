@@ -1,0 +1,35 @@
+From 9d00bfa27fbb1f833380328d46b010cde0bda23d Mon Sep 17 00:00:00 2001
+From: Riku Voipio <riku.voipio@linaro.org>
+Date: Fri, 5 Jan 2018 17:48:51 +0200
+Subject: [PATCH] mcbin: Disable spi
+
+---
+ arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts b/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts
+index b3350827ee55..f5b80a49b044 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts
++++ b/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dts
+@@ -292,18 +292,6 @@
+ 	status = "okay";
+ };
+ 
+-&cps_spi1 {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&cps_spi1_pins>;
+-	status = "okay";
+-
+-	spi-flash@0 {
+-		compatible = "st,w25q32";
+-		spi-max-frequency = <50000000>;
+-		reg = <0>;
+-	};
+-};
+-
+ &cps_usb3_0 {
+ 	/* CPS Lane 2 - CON7 */
+ 	usb-phy = <&usb3h0_phy>;
+-- 
+2.14.2
+

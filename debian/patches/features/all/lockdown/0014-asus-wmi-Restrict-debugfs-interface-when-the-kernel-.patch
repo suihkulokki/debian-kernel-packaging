@@ -19,11 +19,11 @@ cc: platform-driver-x86@vger.kernel.org
  drivers/platform/x86/asus-wmi.c | 9 +++++++++
  1 file changed, 9 insertions(+)
 
-Index: debian-kernel-packaging/drivers/platform/x86/asus-wmi.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/platform/x86/asus-wmi.c
-+++ debian-kernel-packaging/drivers/platform/x86/asus-wmi.c
-@@ -1968,6 +1968,9 @@ static int show_dsts(struct seq_file *m,
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 48e1541dc8d4..ef5587469337 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -1905,6 +1905,9 @@ static int show_dsts(struct seq_file *m, void *data)
  	int err;
  	u32 retval = -1;
  
@@ -33,7 +33,7 @@ Index: debian-kernel-packaging/drivers/platform/x86/asus-wmi.c
  	err = asus_wmi_get_devstate(asus, asus->debug.dev_id, &retval);
  
  	if (err < 0)
-@@ -1984,6 +1987,9 @@ static int show_devs(struct seq_file *m,
+@@ -1921,6 +1924,9 @@ static int show_devs(struct seq_file *m, void *data)
  	int err;
  	u32 retval = -1;
  
@@ -43,7 +43,7 @@ Index: debian-kernel-packaging/drivers/platform/x86/asus-wmi.c
  	err = asus_wmi_set_devstate(asus->debug.dev_id, asus->debug.ctrl_param,
  				    &retval);
  
-@@ -2008,6 +2014,9 @@ static int show_call(struct seq_file *m,
+@@ -1945,6 +1951,9 @@ static int show_call(struct seq_file *m, void *data)
  	union acpi_object *obj;
  	acpi_status status;
  

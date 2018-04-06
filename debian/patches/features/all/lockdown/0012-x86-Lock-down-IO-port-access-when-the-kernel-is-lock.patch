@@ -20,11 +20,11 @@ cc: x86@kernel.org
  arch/x86/kernel/ioport.c | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
-Index: debian-kernel-packaging/arch/x86/kernel/ioport.c
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/kernel/ioport.c
-+++ debian-kernel-packaging/arch/x86/kernel/ioport.c
-@@ -31,7 +31,8 @@ asmlinkage long sys_ioperm(unsigned long
+diff --git a/arch/x86/kernel/ioport.c b/arch/x86/kernel/ioport.c
+index 9c3cf0944bce..2c0f058651c5 100644
+--- a/arch/x86/kernel/ioport.c
++++ b/arch/x86/kernel/ioport.c
+@@ -30,7 +30,8 @@ asmlinkage long sys_ioperm(unsigned long from, unsigned long num, int turn_on)
  
  	if ((from + num <= from) || (from + num > IO_BITMAP_BITS))
  		return -EINVAL;
@@ -34,7 +34,7 @@ Index: debian-kernel-packaging/arch/x86/kernel/ioport.c
  		return -EPERM;
  
  	/*
-@@ -121,7 +122,8 @@ SYSCALL_DEFINE1(iopl, unsigned int, leve
+@@ -120,7 +121,8 @@ SYSCALL_DEFINE1(iopl, unsigned int, level)
  		return -EINVAL;
  	/* Trying to gain more privileges? */
  	if (level > old) {

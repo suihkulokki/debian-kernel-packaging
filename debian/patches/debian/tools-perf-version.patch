@@ -7,11 +7,9 @@ Forwarded: no
 man page title.  Install bash_completion script for perf with a
 version-dependent name.  And do the same for trace.]
 
-Index: debian-kernel-packaging/tools/perf/Makefile.perf
-===================================================================
---- debian-kernel-packaging.orig/tools/perf/Makefile.perf
-+++ debian-kernel-packaging/tools/perf/Makefile.perf
-@@ -755,23 +755,23 @@ endif
+--- a/tools/perf/Makefile.perf
++++ b/tools/perf/Makefile.perf
+@@ -721,23 +721,23 @@ endif
  install-tools: all install-gtk
  	$(call QUIET_INSTALL, binaries) \
  		$(INSTALL) -d -m 755 '$(DESTDIR_SQ)$(bindir_SQ)'; \
@@ -41,7 +39,7 @@ Index: debian-kernel-packaging/tools/perf/Makefile.perf
  	$(call QUIET_INSTALL, perf-archive) \
  		$(INSTALL) $(OUTPUT)perf-archive -t '$(DESTDIR_SQ)$(perfexec_instdir_SQ)'
  	$(call QUIET_INSTALL, perf-with-kcore) \
-@@ -799,7 +799,7 @@ ifndef NO_LIBPYTHON
+@@ -765,7 +765,7 @@ ifndef NO_LIBPYTHON
  endif
  	$(call QUIET_INSTALL, perf_completion-script) \
  		$(INSTALL) -d -m 755 '$(DESTDIR_SQ)$(sysconfdir_SQ)/bash_completion.d'; \
@@ -50,7 +48,7 @@ Index: debian-kernel-packaging/tools/perf/Makefile.perf
  	$(call QUIET_INSTALL, perf-tip) \
  		$(INSTALL) -d -m 755 '$(DESTDIR_SQ)$(tip_instdir_SQ)'; \
  		$(INSTALL) Documentation/tips.txt -t '$(DESTDIR_SQ)$(tip_instdir_SQ)'
-@@ -824,7 +824,7 @@ install-python_ext:
+@@ -790,7 +790,7 @@ install-python_ext:
  
  # 'make install-doc' should call 'make -C Documentation install'
  $(INSTALL_DOC_TARGETS):
@@ -59,10 +57,8 @@ Index: debian-kernel-packaging/tools/perf/Makefile.perf
  
  ### Cleaning rules
  
-Index: debian-kernel-packaging/tools/perf/Documentation/Makefile
-===================================================================
---- debian-kernel-packaging.orig/tools/perf/Documentation/Makefile
-+++ debian-kernel-packaging/tools/perf/Documentation/Makefile
+--- a/tools/perf/Documentation/Makefile
++++ b/tools/perf/Documentation/Makefile
 @@ -183,14 +183,16 @@ ifdef missing_tools
  	$(error "You need to install $(missing_tools) for man pages")
  endif
@@ -86,11 +82,9 @@ Index: debian-kernel-packaging/tools/perf/Documentation/Makefile
  
  install-man: check-man-tools man do-install-man
  
-Index: debian-kernel-packaging/tools/perf/util/Build
-===================================================================
---- debian-kernel-packaging.orig/tools/perf/util/Build
-+++ debian-kernel-packaging/tools/perf/util/Build
-@@ -190,6 +190,7 @@ CFLAGS_libstring.o     += -Wno-unused-pa
+--- a/tools/perf/util/Build
++++ b/tools/perf/util/Build
+@@ -179,6 +179,7 @@ CFLAGS_libstring.o     += -Wno-unused-pa
  CFLAGS_hweight.o       += -Wno-unused-parameter -DETC_PERFCONFIG="BUILD_STR($(ETC_PERFCONFIG_SQ))"
  CFLAGS_parse-events.o  += -Wno-redundant-decls
  CFLAGS_header.o        += -include $(OUTPUT)PERF-VERSION-FILE
@@ -98,11 +92,9 @@ Index: debian-kernel-packaging/tools/perf/util/Build
  
  $(OUTPUT)util/kallsyms.o: ../lib/symbol/kallsyms.c FORCE
  	$(call rule_mkdir)
-Index: debian-kernel-packaging/tools/perf/util/vdso.c
-===================================================================
---- debian-kernel-packaging.orig/tools/perf/util/vdso.c
-+++ debian-kernel-packaging/tools/perf/util/vdso.c
-@@ -52,12 +52,12 @@ static struct vdso_info *vdso_info__new(
+--- a/tools/perf/util/vdso.c
++++ b/tools/perf/util/vdso.c
+@@ -51,12 +51,12 @@ static struct vdso_info *vdso_info__new(
  		.vdso32  = {
  			.temp_file_name = VDSO__TEMP_FILE_NAME,
  			.dso_name = DSO__NAME_VDSO32,

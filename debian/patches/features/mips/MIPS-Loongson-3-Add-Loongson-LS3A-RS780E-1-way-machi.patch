@@ -15,10 +15,8 @@ Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
  arch/mips/loongson64/common/uart_base.c | 1 +
  4 files changed, 4 insertions(+)
 
-Index: debian-kernel-packaging/arch/mips/include/asm/bootinfo.h
-===================================================================
---- debian-kernel-packaging.orig/arch/mips/include/asm/bootinfo.h
-+++ debian-kernel-packaging/arch/mips/include/asm/bootinfo.h
+--- a/arch/mips/include/asm/bootinfo.h
++++ b/arch/mips/include/asm/bootinfo.h
 @@ -71,6 +71,7 @@ enum loongson_machine_type {
  	MACH_LEMOTE_NAS,
  	MACH_LEMOTE_LL2F,
@@ -27,10 +25,8 @@ Index: debian-kernel-packaging/arch/mips/include/asm/bootinfo.h
  	MACH_LOONGSON_END
  };
  
-Index: debian-kernel-packaging/arch/mips/loongson64/common/machtype.c
-===================================================================
---- debian-kernel-packaging.orig/arch/mips/loongson64/common/machtype.c
-+++ debian-kernel-packaging/arch/mips/loongson64/common/machtype.c
+--- a/arch/mips/loongson64/common/machtype.c
++++ b/arch/mips/loongson64/common/machtype.c
 @@ -28,6 +28,7 @@ static const char *system_types[] = {
  	[MACH_LEMOTE_NAS]	= "lemote-nas-2f",
  	[MACH_LEMOTE_LL2F]	= "lemote-lynloong-2f",
@@ -39,10 +35,8 @@ Index: debian-kernel-packaging/arch/mips/loongson64/common/machtype.c
  	[MACH_LOONGSON_END]	= NULL,
  };
  
-Index: debian-kernel-packaging/arch/mips/loongson64/common/serial.c
-===================================================================
---- debian-kernel-packaging.orig/arch/mips/loongson64/common/serial.c
-+++ debian-kernel-packaging/arch/mips/loongson64/common/serial.c
+--- a/arch/mips/loongson64/common/serial.c
++++ b/arch/mips/loongson64/common/serial.c
 @@ -48,6 +48,7 @@ static struct plat_serial8250_port uart8
  	[MACH_LEMOTE_NAS]	= {PORT_M(3, 3686400), {} },
  	[MACH_LEMOTE_LL2F]	= {PORT(3, 1843200), {} },
@@ -51,10 +45,8 @@ Index: debian-kernel-packaging/arch/mips/loongson64/common/serial.c
  	[MACH_LOONGSON_END]	= {},
  };
  
-Index: debian-kernel-packaging/arch/mips/loongson64/common/uart_base.c
-===================================================================
---- debian-kernel-packaging.orig/arch/mips/loongson64/common/uart_base.c
-+++ debian-kernel-packaging/arch/mips/loongson64/common/uart_base.c
+--- a/arch/mips/loongson64/common/uart_base.c
++++ b/arch/mips/loongson64/common/uart_base.c
 @@ -25,6 +25,7 @@ void prom_init_loongson_uart_base(void)
  {
  	switch (mips_machtype) {

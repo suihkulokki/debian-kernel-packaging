@@ -28,10 +28,8 @@ Signed-off-by: Linn Crosetto <linn@hpe.com>
  include/linux/efi.h                     |  1 +
  7 files changed, 32 insertions(+), 2 deletions(-)
 
-Index: debian-kernel-packaging/drivers/firmware/efi/arm-init.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/firmware/efi/arm-init.c
-+++ debian-kernel-packaging/drivers/firmware/efi/arm-init.c
+--- a/drivers/firmware/efi/arm-init.c
++++ b/drivers/firmware/efi/arm-init.c
 @@ -21,6 +21,7 @@
  #include <linux/of_fdt.h>
  #include <linux/platform_device.h>
@@ -50,11 +48,9 @@ Index: debian-kernel-packaging/drivers/firmware/efi/arm-init.c
  	if (uefi_init() < 0) {
  		efi_memmap_unmap();
  		return;
-Index: debian-kernel-packaging/drivers/firmware/efi/efi.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/firmware/efi/efi.c
-+++ debian-kernel-packaging/drivers/firmware/efi/efi.c
-@@ -639,7 +639,8 @@ static __initdata struct params fdt_para
+--- a/drivers/firmware/efi/efi.c
++++ b/drivers/firmware/efi/efi.c
+@@ -635,7 +635,8 @@ static __initdata struct params fdt_para
  	UEFI_PARAM("MemMap Address", "linux,uefi-mmap-start", mmap),
  	UEFI_PARAM("MemMap Size", "linux,uefi-mmap-size", mmap_size),
  	UEFI_PARAM("MemMap Desc. Size", "linux,uefi-mmap-desc-size", desc_size),
@@ -64,10 +60,8 @@ Index: debian-kernel-packaging/drivers/firmware/efi/efi.c
  };
  
  static __initdata struct params xen_fdt_params[] = {
-Index: debian-kernel-packaging/drivers/firmware/efi/libstub/fdt.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/firmware/efi/libstub/fdt.c
-+++ debian-kernel-packaging/drivers/firmware/efi/libstub/fdt.c
+--- a/drivers/firmware/efi/libstub/fdt.c
++++ b/drivers/firmware/efi/libstub/fdt.c
 @@ -158,6 +158,13 @@ static efi_status_t update_fdt(efi_syste
  			return efi_status;
  		}
@@ -82,11 +76,9 @@ Index: debian-kernel-packaging/drivers/firmware/efi/libstub/fdt.c
  	return EFI_SUCCESS;
  
  fdt_set_fail:
-Index: debian-kernel-packaging/include/linux/efi.h
-===================================================================
---- debian-kernel-packaging.orig/include/linux/efi.h
-+++ debian-kernel-packaging/include/linux/efi.h
-@@ -786,6 +786,7 @@ struct efi_fdt_params {
+--- a/include/linux/efi.h
++++ b/include/linux/efi.h
+@@ -749,6 +749,7 @@ struct efi_fdt_params {
  	u32 mmap_size;
  	u32 desc_size;
  	u32 desc_ver;

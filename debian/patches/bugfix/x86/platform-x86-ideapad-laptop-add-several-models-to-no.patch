@@ -15,11 +15,9 @@ Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
  drivers/platform/x86/ideapad-laptop.c | 70 +++++++++++++++++++++++++++++++++++
  1 file changed, 70 insertions(+)
 
-Index: debian-kernel-packaging/drivers/platform/x86/ideapad-laptop.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/platform/x86/ideapad-laptop.c
-+++ debian-kernel-packaging/drivers/platform/x86/ideapad-laptop.c
-@@ -1052,6 +1052,27 @@ static const struct dmi_system_id no_hw_
+--- a/drivers/platform/x86/ideapad-laptop.c
++++ b/drivers/platform/x86/ideapad-laptop.c
+@@ -872,6 +872,27 @@ static const struct dmi_system_id no_hw_
  		},
  	},
  	{
@@ -47,7 +45,7 @@ Index: debian-kernel-packaging/drivers/platform/x86/ideapad-laptop.c
  		.ident = "Lenovo V310-15ISK",
  		.matches = {
  		        DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
-@@ -1066,6 +1087,41 @@ static const struct dmi_system_id no_hw_
+@@ -886,6 +907,41 @@ static const struct dmi_system_id no_hw_
  		},
  	},
  	{
@@ -89,7 +87,7 @@ Index: debian-kernel-packaging/drivers/platform/x86/ideapad-laptop.c
  		.ident = "Lenovo ideapad 310-15IKB",
  		.matches = {
  		        DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
-@@ -1073,6 +1129,20 @@ static const struct dmi_system_id no_hw_
+@@ -893,6 +949,20 @@ static const struct dmi_system_id no_hw_
  		},
  	},
  	{

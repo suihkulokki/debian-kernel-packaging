@@ -20,21 +20,21 @@ cc: kexec@lists.infradead.org
  kernel/kexec.c | 7 +++++++
  1 file changed, 7 insertions(+)
 
-Index: debian-kernel-packaging/kernel/kexec.c
-===================================================================
---- debian-kernel-packaging.orig/kernel/kexec.c
-+++ debian-kernel-packaging/kernel/kexec.c
-@@ -202,6 +202,13 @@ SYSCALL_DEFINE4(kexec_load, unsigned lon
+diff --git a/kernel/kexec.c b/kernel/kexec.c
+index e62ec4dc6620..7dadfed9b676 100644
+--- a/kernel/kexec.c
++++ b/kernel/kexec.c
+@@ -201,6 +201,13 @@ SYSCALL_DEFINE4(kexec_load, unsigned long, entry, unsigned long, nr_segments,
+ 	if (!capable(CAP_SYS_BOOT) || kexec_load_disabled)
  		return -EPERM;
  
- 	/*
++	/*
 +	 * kexec can be used to circumvent module loading restrictions, so
 +	 * prevent loading in that case
 +	 */
 +	if (kernel_is_locked_down("kexec of unsigned images"))
 +		return -EPERM;
 +
-+	/*
+ 	/*
  	 * Verify we have a legal set of flags
  	 * This leaves us room for future extensions.
- 	 */

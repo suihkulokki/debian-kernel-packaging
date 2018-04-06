@@ -22,10 +22,8 @@ incorrect check has been fixed with upstream commit 53d1cd6b125f.
 Keep in the patch the distinction and report for the zero and
 negative cases.]
 ---
-Index: debian-kernel-packaging/tools/power/cpupower/bench/system.c
-===================================================================
---- debian-kernel-packaging.orig/tools/power/cpupower/bench/system.c
-+++ debian-kernel-packaging/tools/power/cpupower/bench/system.c
+--- a/tools/power/cpupower/bench/system.c
++++ b/tools/power/cpupower/bench/system.c
 @@ -58,12 +58,19 @@ long long int get_time()
  
  int set_cpufreq_governor(char *governor, unsigned int cpu)

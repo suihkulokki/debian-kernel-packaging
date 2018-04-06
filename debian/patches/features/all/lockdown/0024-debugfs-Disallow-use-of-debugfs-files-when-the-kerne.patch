@@ -27,10 +27,8 @@ cc: Thomas Gleixner <tglx@linutronix.de>
  fs/debugfs/file.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
-Index: debian-kernel-packaging/fs/debugfs/file.c
-===================================================================
---- debian-kernel-packaging.orig/fs/debugfs/file.c
-+++ debian-kernel-packaging/fs/debugfs/file.c
+--- a/fs/debugfs/file.c
++++ b/fs/debugfs/file.c
 @@ -142,6 +142,9 @@ static int open_proxy_open(struct inode
  	const struct file_operations *real_fops = NULL;
  	int r;

@@ -10,11 +10,9 @@ a pre-built objtool.
  Makefile | 33 ++++++++++++++++-----------------
  1 file changed, 16 insertions(+), 17 deletions(-)
 
-Index: debian-kernel-packaging/Makefile
-===================================================================
---- debian-kernel-packaging.orig/Makefile
-+++ debian-kernel-packaging/Makefile
-@@ -953,22 +953,6 @@ mod_sign_cmd = true
+--- a/Makefile
++++ b/Makefile
+@@ -923,22 +923,6 @@ mod_sign_cmd = true
  endif
  export mod_sign_cmd
  
@@ -37,7 +35,7 @@ Index: debian-kernel-packaging/Makefile
  
  ifeq ($(KBUILD_EXTMOD),)
  core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/
-@@ -1105,6 +1089,22 @@ uapi-asm-generic:
+@@ -1075,6 +1059,22 @@ uapi-asm-generic:
  	$(Q)$(MAKE) -f $(srctree)/scripts/Makefile.asm-generic \
  	            src=uapi/asm obj=arch/$(SRCARCH)/include/generated/uapi/asm
  

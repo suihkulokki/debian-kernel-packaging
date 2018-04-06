@@ -20,10 +20,8 @@ References: https://bugs.debian.org/717557
 References: https://bugs.debian.org/726861
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
-Index: debian-kernel-packaging/scripts/Kbuild.include
-===================================================================
---- debian-kernel-packaging.orig/scripts/Kbuild.include
-+++ debian-kernel-packaging/scripts/Kbuild.include
+--- a/scripts/Kbuild.include
++++ b/scripts/Kbuild.include
 @@ -194,7 +194,7 @@ CC_OPTION_CFLAGS = $(filter-out $(GCC_PL
  # Usage: cflags-y += $(call cc-option,-march=winchip-c6,-march=i586)
  
@@ -71,11 +69,9 @@ Index: debian-kernel-packaging/scripts/Kbuild.include
  	$(LD) $(LDFLAGS) $(1) "$$TMPO" -o "$$TMP",$(1),$(2))
  
  # ar-option
-Index: debian-kernel-packaging/Makefile
-===================================================================
---- debian-kernel-packaging.orig/Makefile
-+++ debian-kernel-packaging/Makefile
-@@ -650,6 +650,8 @@ endif
+--- a/Makefile
++++ b/Makefile
+@@ -667,6 +667,8 @@ endif
  KBUILD_CFLAGS += $(call cc-ifversion, -lt, 0409, \
  			$(call cc-disable-warning,maybe-uninitialized,))
  
@@ -84,7 +80,7 @@ Index: debian-kernel-packaging/Makefile
  # Tell gcc to never replace conditional load with a non-conditional one
  KBUILD_CFLAGS	+= $(call cc-option,--param=allow-store-data-races=0)
  
-@@ -809,7 +811,7 @@ KBUILD_CFLAGS	+= $(call cc-option,-fdata
+@@ -776,7 +778,7 @@ KBUILD_CFLAGS	+= $(call cc-option,-fdata
  endif
  
  # arch Makefile may override CC so keep this after arch Makefile is included
