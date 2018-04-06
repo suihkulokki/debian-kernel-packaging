@@ -1,5 +1,5 @@
 [abi]
-abiname: 1
+abiname: 2
 ignore-changes:
  __cpuhp_*
  __xive_vm_h_*
@@ -76,6 +76,7 @@ arches:
  armhf
  hppa
  i386
+ ia64
  m68k
  mips
  mips64
@@ -117,8 +118,6 @@ enabled: false
 [description]
 part-long-up: This kernel is not suitable for SMP (multi-processor,
  multi-core or hyper-threaded) systems.
-part-long-xen: This kernel also runs on a Xen hypervisor.
- It supports both privileged (dom0) and unprivileged (domU) operation.
 
 [image]
 initramfs-generators: initramfs-tools initramfs-fallback

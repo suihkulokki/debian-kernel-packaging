@@ -7,11 +7,9 @@ Forwarded: not-needed
 This reverts commit 561ec64ae67ef25cac8d72bb9c4bfc955edfd415
 ('VFS: don't do protected {sym,hard}links by default').
 
-Index: debian-kernel-packaging/fs/namei.c
-===================================================================
---- debian-kernel-packaging.orig/fs/namei.c
-+++ debian-kernel-packaging/fs/namei.c
-@@ -881,8 +881,8 @@ static inline void put_link(struct namei
+--- a/fs/namei.c
++++ b/fs/namei.c
+@@ -847,8 +847,8 @@ static inline void put_link(struct namei
  		path_put(&last->link);
  }
  

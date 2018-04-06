@@ -13,11 +13,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  security/integrity/ima/ima_policy.c | 39 +++++++++++++++++++++++++++----------
  1 file changed, 29 insertions(+), 10 deletions(-)
 
-Index: debian-kernel-packaging/security/integrity/ima/ima_policy.c
-===================================================================
---- debian-kernel-packaging.orig/security/integrity/ima/ima_policy.c
-+++ debian-kernel-packaging/security/integrity/ima/ima_policy.c
-@@ -431,14 +431,21 @@ void ima_update_policy_flag(void)
+diff --git a/security/integrity/ima/ima_policy.c b/security/integrity/ima/ima_policy.c
+index 95209a5f8595..49c75e2a1ec5 100644
+--- a/security/integrity/ima/ima_policy.c
++++ b/security/integrity/ima/ima_policy.c
+@@ -427,14 +427,21 @@ void ima_update_policy_flag(void)
   */
  void __init ima_init_policy(void)
  {
@@ -45,7 +45,7 @@ Index: debian-kernel-packaging/security/integrity/ima/ima_policy.c
  
  	for (i = 0; i < measure_entries; i++)
  		list_add_tail(&dont_measure_rules[i].list, &ima_default_rules);
-@@ -459,11 +466,23 @@ void __init ima_init_policy(void)
+@@ -455,11 +462,23 @@ void __init ima_init_policy(void)
  
  	/*
  	 * Insert the appraise rules requiring file signatures, prior to

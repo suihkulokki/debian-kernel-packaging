@@ -11,11 +11,9 @@ all the other systems where the same device ID appears, so disable
 auto-loading.
 
 ---
-Index: debian-kernel-packaging/drivers/net/fjes/fjes_main.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/net/fjes/fjes_main.c
-+++ debian-kernel-packaging/drivers/net/fjes/fjes_main.c
-@@ -83,7 +83,7 @@ static const struct acpi_device_id fjes_
+--- a/drivers/net/fjes/fjes_main.c
++++ b/drivers/net/fjes/fjes_main.c
+@@ -81,7 +81,7 @@ static const struct acpi_device_id fjes_
  	{ACPI_MOTHERBOARD_RESOURCE_HID, 0},
  	{"", 0},
  };

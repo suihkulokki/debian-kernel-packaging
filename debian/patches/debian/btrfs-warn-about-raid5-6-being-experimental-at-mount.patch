@@ -15,11 +15,9 @@ Signed-off-by: Adam Borowski <kilobyte@angband.pl>
  fs/btrfs/disk-io.c | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-Index: debian-kernel-packaging/fs/btrfs/disk-io.c
-===================================================================
---- debian-kernel-packaging.orig/fs/btrfs/disk-io.c
-+++ debian-kernel-packaging/fs/btrfs/disk-io.c
-@@ -2890,6 +2890,15 @@ retry_root_backup:
+--- a/fs/btrfs/disk-io.c
++++ b/fs/btrfs/disk-io.c
+@@ -3060,6 +3060,15 @@ retry_root_backup:
  		btrfs_set_and_info(fs_info, SSD, "enabling ssd optimizations");
  	}
  

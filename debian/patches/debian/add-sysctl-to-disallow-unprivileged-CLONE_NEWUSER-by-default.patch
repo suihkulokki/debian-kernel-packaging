@@ -13,11 +13,9 @@ issues are found, we have a fail-safe.
 Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
 [bwh: Remove unneeded binary sysctl bits]
 ---
-Index: debian-kernel-packaging/kernel/fork.c
-===================================================================
---- debian-kernel-packaging.orig/kernel/fork.c
-+++ debian-kernel-packaging/kernel/fork.c
-@@ -103,6 +103,11 @@
+--- a/kernel/fork.c
++++ b/kernel/fork.c
+@@ -102,6 +102,11 @@
  
  #define CREATE_TRACE_POINTS
  #include <trace/events/task.h>
@@ -29,7 +27,7 @@ Index: debian-kernel-packaging/kernel/fork.c
  
  /*
   * Minimum number of threads to boot the kernel
-@@ -1602,6 +1607,10 @@ static __latent_entropy struct task_stru
+@@ -1550,6 +1555,10 @@ static __latent_entropy struct task_stru
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -40,7 +38,7 @@ Index: debian-kernel-packaging/kernel/fork.c
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -2396,6 +2405,12 @@ SYSCALL_DEFINE1(unshare, unsigned long,
+@@ -2343,6 +2352,12 @@ SYSCALL_DEFINE1(unshare, unsigned long,
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -53,10 +51,8 @@ Index: debian-kernel-packaging/kernel/fork.c
  	err = check_unshare_flags(unshare_flags);
  	if (err)
  		goto bad_unshare_out;
-Index: debian-kernel-packaging/kernel/sysctl.c
-===================================================================
---- debian-kernel-packaging.orig/kernel/sysctl.c
-+++ debian-kernel-packaging/kernel/sysctl.c
+--- a/kernel/sysctl.c
++++ b/kernel/sysctl.c
 @@ -105,6 +105,9 @@ extern int core_uses_pid;
  extern char core_pattern[];
  extern unsigned int core_pipe_limit;
@@ -67,7 +63,7 @@ Index: debian-kernel-packaging/kernel/sysctl.c
  extern int pid_max;
  extern int pid_max_min, pid_max_max;
  extern int percpu_pagelist_fraction;
-@@ -514,6 +517,15 @@ static struct ctl_table kern_table[] = {
+@@ -512,6 +515,15 @@ static struct ctl_table kern_table[] = {
  		.mode		= 0644,
  		.proc_handler	= proc_dointvec,
  	},
@@ -83,10 +79,8 @@ Index: debian-kernel-packaging/kernel/sysctl.c
  #endif
  #ifdef CONFIG_PROC_SYSCTL
  	{
-Index: debian-kernel-packaging/kernel/user_namespace.c
-===================================================================
---- debian-kernel-packaging.orig/kernel/user_namespace.c
-+++ debian-kernel-packaging/kernel/user_namespace.c
+--- a/kernel/user_namespace.c
++++ b/kernel/user_namespace.c
 @@ -26,6 +26,9 @@
  #include <linux/bsearch.h>
  #include <linux/sort.h>

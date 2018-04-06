@@ -27,11 +27,9 @@ Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
  arch/x86/include/asm/unistd.h                   |    4 +-
  7 files changed, 80 insertions(+), 5 deletions(-)
 
-Index: debian-kernel-packaging/Documentation/admin-guide/kernel-parameters.txt
-===================================================================
---- debian-kernel-packaging.orig/Documentation/admin-guide/kernel-parameters.txt
-+++ debian-kernel-packaging/Documentation/admin-guide/kernel-parameters.txt
-@@ -4114,6 +4114,10 @@
+--- a/Documentation/admin-guide/kernel-parameters.txt
++++ b/Documentation/admin-guide/kernel-parameters.txt
+@@ -4096,6 +4096,10 @@
  
  	switches=	[HW,M68k]
  
@@ -42,11 +40,9 @@ Index: debian-kernel-packaging/Documentation/admin-guide/kernel-parameters.txt
  	sysfs.deprecated=0|1 [KNL]
  			Enable/disable old style sysfs layout for old udev
  			on older distributions. When this option is enabled
-Index: debian-kernel-packaging/arch/x86/Kconfig
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/Kconfig
-+++ debian-kernel-packaging/arch/x86/Kconfig
-@@ -2917,6 +2917,14 @@ config COMPAT_32
+--- a/arch/x86/Kconfig
++++ b/arch/x86/Kconfig
+@@ -2863,6 +2863,14 @@ config COMPAT_32
  	select HAVE_UID16
  	select OLD_SIGSUSPEND3
  
@@ -61,10 +57,8 @@ Index: debian-kernel-packaging/arch/x86/Kconfig
  config COMPAT
  	def_bool y
  	depends on IA32_EMULATION || X86_X32
-Index: debian-kernel-packaging/arch/x86/entry/common.c
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/entry/common.c
-+++ debian-kernel-packaging/arch/x86/entry/common.c
+--- a/arch/x86/entry/common.c
++++ b/arch/x86/entry/common.c
 @@ -282,8 +282,15 @@ __visible void do_syscall_64(struct pt_r
  	 * table.  The only functional difference is the x32 bit in
  	 * regs->orig_ax, which changes the behavior of some syscalls.
@@ -83,10 +77,8 @@ Index: debian-kernel-packaging/arch/x86/entry/common.c
  		regs->ax = sys_call_table[nr](
  			regs->di, regs->si, regs->dx,
  			regs->r10, regs->r8, regs->r9);
-Index: debian-kernel-packaging/arch/x86/entry/syscall_64.c
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/entry/syscall_64.c
-+++ debian-kernel-packaging/arch/x86/entry/syscall_64.c
+--- a/arch/x86/entry/syscall_64.c
++++ b/arch/x86/entry/syscall_64.c
 @@ -4,6 +4,9 @@
  #include <linux/linkage.h>
  #include <linux/sys.h>
@@ -148,10 +140,8 @@ Index: debian-kernel-packaging/arch/x86/entry/syscall_64.c
 +arch_param_cb(x32, &x32_param_ops, NULL, 0444);
 +
 +#endif
-Index: debian-kernel-packaging/arch/x86/include/asm/elf.h
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/include/asm/elf.h
-+++ debian-kernel-packaging/arch/x86/include/asm/elf.h
+--- a/arch/x86/include/asm/elf.h
++++ b/arch/x86/include/asm/elf.h
 @@ -10,6 +10,7 @@
  #include <asm/ptrace.h>
  #include <asm/user.h>
@@ -170,10 +160,8 @@ Index: debian-kernel-packaging/arch/x86/include/asm/elf.h
  
  #if __USER32_DS != __USER_DS
  # error "The following code assumes __USER32_DS == __USER_DS"
-Index: debian-kernel-packaging/arch/x86/include/asm/syscall.h
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/include/asm/syscall.h
-+++ debian-kernel-packaging/arch/x86/include/asm/syscall.h
+--- a/arch/x86/include/asm/syscall.h
++++ b/arch/x86/include/asm/syscall.h
 @@ -16,6 +16,7 @@
  #include <uapi/linux/audit.h>
  #include <linux/sched.h>
@@ -201,10 +189,8 @@ Index: debian-kernel-packaging/arch/x86/include/asm/syscall.h
  /*
   * Only the low 32 bits of orig_ax are meaningful, so we return int.
   * This importantly ignores the high bits on 64-bit, so comparisons
-Index: debian-kernel-packaging/arch/x86/include/asm/unistd.h
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/include/asm/unistd.h
-+++ debian-kernel-packaging/arch/x86/include/asm/unistd.h
+--- a/arch/x86/include/asm/unistd.h
++++ b/arch/x86/include/asm/unistd.h
 @@ -6,9 +6,9 @@
  
  

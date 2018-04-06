@@ -27,11 +27,11 @@ cc: linux-acpi@vger.kernel.org
  drivers/acpi/apei/einj.c | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: debian-kernel-packaging/drivers/acpi/apei/einj.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/acpi/apei/einj.c
-+++ debian-kernel-packaging/drivers/acpi/apei/einj.c
-@@ -518,6 +518,9 @@ static int einj_error_inject(u32 type, u
+diff --git a/drivers/acpi/apei/einj.c b/drivers/acpi/apei/einj.c
+index b38737c83a24..6d71e1e97b20 100644
+--- a/drivers/acpi/apei/einj.c
++++ b/drivers/acpi/apei/einj.c
+@@ -518,6 +518,9 @@ static int einj_error_inject(u32 type, u32 flags, u64 param1, u64 param2,
  	int rc;
  	u64 base_addr, size;
  

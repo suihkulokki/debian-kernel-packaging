@@ -6,10 +6,8 @@ Forwarded: not-needed
 We want to provide the option of autogrouping but without enabling
 it by default yet.
 
-Index: debian-kernel-packaging/kernel/sched/autogroup.c
-===================================================================
---- debian-kernel-packaging.orig/kernel/sched/autogroup.c
-+++ debian-kernel-packaging/kernel/sched/autogroup.c
+--- a/kernel/sched/autogroup.c
++++ b/kernel/sched/autogroup.c
 @@ -7,7 +7,7 @@
  
  #include "sched.h"

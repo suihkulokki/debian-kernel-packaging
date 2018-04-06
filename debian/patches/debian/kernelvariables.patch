@@ -12,10 +12,8 @@ also CROSS_COMPILE, CFLAGS_KERNEL and CFLAGS_MODULE.
 This file can only be read after we establish the build tree, and all
 use of $(ARCH) needs to be moved after this.
 
-Index: debian-kernel-packaging/Makefile
-===================================================================
---- debian-kernel-packaging.orig/Makefile
-+++ debian-kernel-packaging/Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -314,39 +314,6 @@ SUBARCH := $(shell uname -m | sed -e s/i
  ARCH		?= $(SUBARCH)
  CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
@@ -56,7 +54,7 @@ Index: debian-kernel-packaging/Makefile
  KCONFIG_CONFIG	?= .config
  export KCONFIG_CONFIG
  
-@@ -397,6 +364,38 @@ CFLAGS_KERNEL	=
+@@ -395,6 +362,38 @@ CFLAGS_KERNEL	=
  AFLAGS_KERNEL	=
  LDFLAGS_vmlinux =
  

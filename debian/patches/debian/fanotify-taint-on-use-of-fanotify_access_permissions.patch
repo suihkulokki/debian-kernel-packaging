@@ -10,10 +10,8 @@ do about that.  So warn and taint the kernel if this feature is
 actually used.
 
 ---
-Index: debian-kernel-packaging/fs/notify/fanotify/fanotify_user.c
-===================================================================
---- debian-kernel-packaging.orig/fs/notify/fanotify/fanotify_user.c
-+++ debian-kernel-packaging/fs/notify/fanotify/fanotify_user.c
+--- a/fs/notify/fanotify/fanotify_user.c
++++ b/fs/notify/fanotify/fanotify_user.c
 @@ -866,6 +866,14 @@ SYSCALL_DEFINE5(fanotify_mark, int, fano
  	if (mask & ~valid_mask)
  		return -EINVAL;

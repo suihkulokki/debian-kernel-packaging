@@ -26,10 +26,8 @@ cc: x86@kernel.org
  security/lock_down.c         | 47 ++++++++++++++++++++++++++++++++++++++++++++
  8 files changed, 86 insertions(+), 8 deletions(-)
 
-Index: debian-kernel-packaging/arch/x86/include/asm/setup.h
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/include/asm/setup.h
-+++ debian-kernel-packaging/arch/x86/include/asm/setup.h
+--- a/arch/x86/include/asm/setup.h
++++ b/arch/x86/include/asm/setup.h
 @@ -9,6 +9,8 @@
  #include <linux/linkage.h>
  #include <asm/page_types.h>
@@ -39,11 +37,9 @@ Index: debian-kernel-packaging/arch/x86/include/asm/setup.h
  #ifdef __i386__
  
  #include <linux/pfn.h>
-Index: debian-kernel-packaging/drivers/input/misc/uinput.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/input/misc/uinput.c
-+++ debian-kernel-packaging/drivers/input/misc/uinput.c
-@@ -365,6 +365,7 @@ static int uinput_create_device(struct u
+--- a/drivers/input/misc/uinput.c
++++ b/drivers/input/misc/uinput.c
+@@ -362,6 +362,7 @@ static int uinput_create_device(struct u
  		dev->flush = uinput_dev_flush;
  	}
  
@@ -51,10 +47,8 @@ Index: debian-kernel-packaging/drivers/input/misc/uinput.c
  	dev->event = uinput_dev_event;
  
  	input_set_drvdata(udev->dev, udev);
-Index: debian-kernel-packaging/drivers/tty/sysrq.c
-===================================================================
---- debian-kernel-packaging.orig/drivers/tty/sysrq.c
-+++ debian-kernel-packaging/drivers/tty/sysrq.c
+--- a/drivers/tty/sysrq.c
++++ b/drivers/tty/sysrq.c
 @@ -487,6 +487,7 @@ static struct sysrq_key_op *sysrq_key_ta
  	/* x: May be registered on mips for TLB dump */
  	/* x: May be registered on ppc/powerpc for xmon */
@@ -128,10 +122,8 @@ Index: debian-kernel-packaging/drivers/tty/sysrq.c
  	}
  
  	return count;
-Index: debian-kernel-packaging/include/linux/input.h
-===================================================================
---- debian-kernel-packaging.orig/include/linux/input.h
-+++ debian-kernel-packaging/include/linux/input.h
+--- a/include/linux/input.h
++++ b/include/linux/input.h
 @@ -42,6 +42,7 @@ struct input_value {
   * @phys: physical path to the device in the system hierarchy
   * @uniq: unique identification code for the device (if device has it)
@@ -158,10 +150,8 @@ Index: debian-kernel-packaging/include/linux/input.h
  /*
   * Verify that we are in sync with input_device_id mod_devicetable.h #defines
   */
-Index: debian-kernel-packaging/include/linux/sysrq.h
-===================================================================
---- debian-kernel-packaging.orig/include/linux/sysrq.h
-+++ debian-kernel-packaging/include/linux/sysrq.h
+--- a/include/linux/sysrq.h
++++ b/include/linux/sysrq.h
 @@ -29,6 +29,8 @@
  #define SYSRQ_ENABLE_BOOT	0x0080
  #define SYSRQ_ENABLE_RTNICE	0x0100
@@ -185,10 +175,8 @@ Index: debian-kernel-packaging/include/linux/sysrq.h
  int register_sysrq_key(int key, struct sysrq_key_op *op);
  int unregister_sysrq_key(int key, struct sysrq_key_op *op);
  struct sysrq_key_op *__sysrq_get_key_op(int key);
-Index: debian-kernel-packaging/kernel/debug/kdb/kdb_main.c
-===================================================================
---- debian-kernel-packaging.orig/kernel/debug/kdb/kdb_main.c
-+++ debian-kernel-packaging/kernel/debug/kdb/kdb_main.c
+--- a/kernel/debug/kdb/kdb_main.c
++++ b/kernel/debug/kdb/kdb_main.c
 @@ -1970,7 +1970,7 @@ static int kdb_sr(int argc, const char *
  		return KDB_ARGCOUNT;
  
@@ -198,11 +186,9 @@ Index: debian-kernel-packaging/kernel/debug/kdb/kdb_main.c
  	kdb_trap_printk--;
  
  	return 0;
-Index: debian-kernel-packaging/security/Kconfig
-===================================================================
---- debian-kernel-packaging.orig/security/Kconfig
-+++ debian-kernel-packaging/security/Kconfig
-@@ -248,6 +248,16 @@ config LOCK_DOWN_KERNEL
+--- a/security/Kconfig
++++ b/security/Kconfig
+@@ -222,6 +222,16 @@ config LOCK_DOWN_KERNEL
  	  turns off various features that might otherwise allow access to the
  	  kernel image (eg. setting MSR registers).
  
@@ -219,10 +205,8 @@ Index: debian-kernel-packaging/security/Kconfig
  source security/selinux/Kconfig
  source security/smack/Kconfig
  source security/tomoyo/Kconfig
-Index: debian-kernel-packaging/security/lock_down.c
-===================================================================
---- debian-kernel-packaging.orig/security/lock_down.c
-+++ debian-kernel-packaging/security/lock_down.c
+--- a/security/lock_down.c
++++ b/security/lock_down.c
 @@ -11,8 +11,14 @@
  
  #include <linux/security.h>

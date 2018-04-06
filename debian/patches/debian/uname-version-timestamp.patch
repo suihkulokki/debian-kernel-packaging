@@ -11,11 +11,9 @@ kernel image reproducible.
 Make mkcompile_h use $KBUILD_BUILD_VERSION_TIMESTAMP in preference to
 $KBUILD_BUILD_TIMESTAMP.
 
-Index: debian-kernel-packaging/scripts/mkcompile_h
-===================================================================
---- debian-kernel-packaging.orig/scripts/mkcompile_h
-+++ debian-kernel-packaging/scripts/mkcompile_h
-@@ -33,10 +33,14 @@ else
+--- a/scripts/mkcompile_h
++++ b/scripts/mkcompile_h
+@@ -37,10 +37,14 @@ else
  	VERSION=$KBUILD_BUILD_VERSION
  fi
  
