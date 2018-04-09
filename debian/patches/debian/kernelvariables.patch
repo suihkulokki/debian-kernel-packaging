@@ -59,9 +59,9 @@ Index: linux-4.14/Makefile
  KCONFIG_CONFIG	?= .config
  export KCONFIG_CONFIG
  
-@@ -960,6 +924,44 @@ ifdef CONFIG_STACK_VALIDATION
-   endif
- endif
+@@ -402,6 +366,45 @@ CFLAGS_KERNEL	=
+ AFLAGS_KERNEL	=
+ LDFLAGS_vmlinux =
  
 +-include $(obj)/.kernelvariables
 +
@@ -101,6 +101,7 @@ Index: linux-4.14/Makefile
 +ifeq ($(ARCH),m68knommu)
 +       hdr-arch  := m68k
 +endif
- 
- ifeq ($(KBUILD_EXTMOD),)
- core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/
++
+ # Use USERINCLUDE when you must reference the UAPI directories only.
+ USERINCLUDE    := \
+ 		-I$(srctree)/arch/$(hdr-arch)/include/uapi \
