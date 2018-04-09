@@ -13,9 +13,11 @@ issues are found, we have a fail-safe.
 Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
 [bwh: Remove unneeded binary sysctl bits]
 ---
---- a/kernel/fork.c
-+++ b/kernel/fork.c
-@@ -87,6 +87,11 @@
+Index: linux-4.14/kernel/fork.c
+===================================================================
+--- linux-4.14.orig/kernel/fork.c
++++ linux-4.14/kernel/fork.c
+@@ -102,6 +102,11 @@
  
  #define CREATE_TRACE_POINTS
  #include <trace/events/task.h>
@@ -27,7 +29,7 @@ Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
  
  /*
   * Minimum number of threads to boot the kernel
-@@ -1252,6 +1257,10 @@ static struct task_struct *copy_process(
+@@ -1554,6 +1559,10 @@ static __latent_entropy struct task_stru
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -38,7 +40,7 @@ Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -1944,6 +1953,12 @@ SYSCALL_DEFINE1(unshare, unsigned long,
+@@ -2347,6 +2356,12 @@ SYSCALL_DEFINE1(unshare, unsigned long,
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -51,9 +53,11 @@ Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
  	err = check_unshare_flags(unshare_flags);
  	if (err)
  		goto bad_unshare_out;
---- a/kernel/sysctl.c
-+++ b/kernel/sysctl.c
-@@ -102,6 +102,9 @@ extern int core_uses_pid;
+Index: linux-4.14/kernel/sysctl.c
+===================================================================
+--- linux-4.14.orig/kernel/sysctl.c
++++ linux-4.14/kernel/sysctl.c
+@@ -104,6 +104,9 @@ extern int core_uses_pid;
  extern char core_pattern[];
  extern unsigned int core_pipe_limit;
  #endif
@@ -63,7 +67,7 @@ Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
  extern int pid_max;
  extern int pid_max_min, pid_max_max;
  extern int percpu_pagelist_fraction;
-@@ -489,6 +492,15 @@ static struct ctl_table kern_table[] = {
+@@ -511,6 +514,15 @@ static struct ctl_table kern_table[] = {
  		.mode		= 0644,
  		.proc_handler	= proc_dointvec,
  	},
@@ -79,9 +83,11 @@ Signed-off-by: Serge Hallyn <serge.hallyn@ubuntu.com>
  #endif
  #ifdef CONFIG_PROC_SYSCTL
  	{
---- a/kernel/user_namespace.c
-+++ b/kernel/user_namespace.c
-@@ -23,6 +23,9 @@
+Index: linux-4.14/kernel/user_namespace.c
+===================================================================
+--- linux-4.14.orig/kernel/user_namespace.c
++++ linux-4.14/kernel/user_namespace.c
+@@ -24,6 +24,9 @@
  #include <linux/projid.h>
  #include <linux/fs_struct.h>
  

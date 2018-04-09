@@ -10,8 +10,10 @@ modpost separately from the kernel, <generated/autoconf.h> won't exist.
 However, no Debian Linux architecture uses the symbol prefix, so we
 can simply omit it.]
 
---- a/scripts/mod/modpost.c
-+++ b/scripts/mod/modpost.c
+Index: linux-4.14/scripts/mod/modpost.c
+===================================================================
+--- linux-4.14.orig/scripts/mod/modpost.c
++++ linux-4.14/scripts/mod/modpost.c
 @@ -19,7 +19,6 @@
  #include <stdbool.h>
  #include <errno.h>

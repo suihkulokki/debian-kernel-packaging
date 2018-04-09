@@ -11,11 +11,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/module.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/kernel/module.c b/kernel/module.c
-index 7eba6dea4f41..3331f2eb9b93 100644
---- a/kernel/module.c
-+++ b/kernel/module.c
-@@ -2756,7 +2756,7 @@ static int module_sig_check(struct load_info *info, int flags)
+Index: linux-4.14/kernel/module.c
+===================================================================
+--- linux-4.14.orig/kernel/module.c
++++ linux-4.14/kernel/module.c
+@@ -2781,7 +2781,7 @@ static int module_sig_check(struct load_
  	}
  
  	/* Not having a signature is only an error if we're strict. */

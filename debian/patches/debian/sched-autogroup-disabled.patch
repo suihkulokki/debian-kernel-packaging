@@ -6,9 +6,11 @@ Forwarded: not-needed
 We want to provide the option of autogrouping but without enabling
 it by default yet.
 
---- a/kernel/sched/autogroup.c
-+++ b/kernel/sched/autogroup.c
-@@ -9,7 +9,7 @@
+Index: linux-4.14/kernel/sched/autogroup.c
+===================================================================
+--- linux-4.14.orig/kernel/sched/autogroup.c
++++ linux-4.14/kernel/sched/autogroup.c
+@@ -8,7 +8,7 @@
  #include <linux/security.h>
  #include <linux/export.h>
  

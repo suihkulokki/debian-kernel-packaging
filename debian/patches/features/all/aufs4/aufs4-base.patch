@@ -8,10 +8,10 @@ Patch headers added by debian/patches/features/all/aufs4/gen-patch
 
 aufs4.x-rcN base patch
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 6671f37..2cadb88 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
+Index: linux-4.14/MAINTAINERS
+===================================================================
+--- linux-4.14.orig/MAINTAINERS
++++ linux-4.14/MAINTAINERS
 @@ -2465,6 +2465,19 @@ F:	include/linux/audit.h
  F:	include/uapi/linux/audit.h
  F:	kernel/audit*
@@ -32,11 +32,11 @@ index 6671f37..2cadb88 100644
  AUXILIARY DISPLAY DRIVERS
  M:	Miguel Ojeda Sandonis <miguel.ojeda.sandonis@gmail.com>
  W:	http://miguelojeda.es/auxdisplay.htm
-diff --git a/drivers/block/loop.c b/drivers/block/loop.c
-index 85de673..d44de9d 100644
---- a/drivers/block/loop.c
-+++ b/drivers/block/loop.c
-@@ -686,6 +686,24 @@ static inline int is_loop_device(struct file *file)
+Index: linux-4.14/drivers/block/loop.c
+===================================================================
+--- linux-4.14.orig/drivers/block/loop.c
++++ linux-4.14/drivers/block/loop.c
+@@ -686,6 +686,24 @@ static inline int is_loop_device(struct
  	return i && S_ISBLK(i->i_mode) && MAJOR(i->i_rdev) == LOOP_MAJOR;
  }
  
@@ -61,11 +61,11 @@ index 85de673..d44de9d 100644
  /* loop sysfs attributes */
  
  static ssize_t loop_attr_show(struct device *dev, char *page,
-diff --git a/fs/dcache.c b/fs/dcache.c
-index f901413..e3719a5 100644
---- a/fs/dcache.c
-+++ b/fs/dcache.c
-@@ -1197,7 +1197,7 @@ enum d_walk_ret {
+Index: linux-4.14/fs/dcache.c
+===================================================================
+--- linux-4.14.orig/fs/dcache.c
++++ linux-4.14/fs/dcache.c
+@@ -1202,7 +1202,7 @@ enum d_walk_ret {
   *
   * The @enter() and @finish() callbacks are called with d_lock held.
   */
@@ -74,11 +74,11 @@ index f901413..e3719a5 100644
  		   enum d_walk_ret (*enter)(void *, struct dentry *),
  		   void (*finish)(void *))
  {
-diff --git a/fs/fcntl.c b/fs/fcntl.c
-index 448a111..f51c2cf 100644
---- a/fs/fcntl.c
-+++ b/fs/fcntl.c
-@@ -31,7 +31,7 @@
+Index: linux-4.14/fs/fcntl.c
+===================================================================
+--- linux-4.14.orig/fs/fcntl.c
++++ linux-4.14/fs/fcntl.c
+@@ -32,7 +32,7 @@
  
  #define SETFL_MASK (O_APPEND | O_NONBLOCK | O_NDELAY | O_DIRECT | O_NOATIME)
  
@@ -87,7 +87,7 @@ index 448a111..f51c2cf 100644
  {
  	struct inode * inode = file_inode(filp);
  	int error = 0;
-@@ -62,6 +62,8 @@ static int setfl(int fd, struct file * filp, unsigned long arg)
+@@ -63,6 +63,8 @@ static int setfl(int fd, struct file * f
  
  	if (filp->f_op->check_flags)
  		error = filp->f_op->check_flags(arg);
@@ -96,10 +96,10 @@ index 448a111..f51c2cf 100644
  	if (error)
  		return error;
  
-diff --git a/fs/inode.c b/fs/inode.c
-index d1e35b5..f7800d6 100644
---- a/fs/inode.c
-+++ b/fs/inode.c
+Index: linux-4.14/fs/inode.c
+===================================================================
+--- linux-4.14.orig/fs/inode.c
++++ linux-4.14/fs/inode.c
 @@ -1655,7 +1655,7 @@ EXPORT_SYMBOL(generic_update_time);
   * This does the actual work of updating an inodes time or version.  Must have
   * had called mnt_want_write() before calling this.
@@ -109,11 +109,11 @@ index d1e35b5..f7800d6 100644
  {
  	int (*update_time)(struct inode *, struct timespec *, int);
  
-diff --git a/fs/namespace.c b/fs/namespace.c
-index 54059b1..4f508a1 100644
---- a/fs/namespace.c
-+++ b/fs/namespace.c
-@@ -844,6 +844,12 @@ static inline int check_mnt(struct mount *mnt)
+Index: linux-4.14/fs/namespace.c
+===================================================================
+--- linux-4.14.orig/fs/namespace.c
++++ linux-4.14/fs/namespace.c
+@@ -846,6 +846,12 @@ static inline int check_mnt(struct mount
  	return mnt->mnt_ns == current->nsproxy->mnt_ns;
  }
  
@@ -126,11 +126,11 @@ index 54059b1..4f508a1 100644
  /*
   * vfsmount lock must be held for write
   */
-diff --git a/fs/read_write.c b/fs/read_write.c
-index a2b9a47..cfd7de4 100644
---- a/fs/read_write.c
-+++ b/fs/read_write.c
-@@ -483,6 +483,28 @@ ssize_t __vfs_write(struct file *file, const char __user *p, size_t count,
+Index: linux-4.14/fs/read_write.c
+===================================================================
+--- linux-4.14.orig/fs/read_write.c
++++ linux-4.14/fs/read_write.c
+@@ -484,6 +484,28 @@ ssize_t __vfs_write(struct file *file, c
  		return -EINVAL;
  }
  
@@ -159,10 +159,10 @@ index a2b9a47..cfd7de4 100644
  ssize_t __kernel_write(struct file *file, const void *buf, size_t count, loff_t *pos)
  {
  	mm_segment_t old_fs;
-diff --git a/fs/splice.c b/fs/splice.c
-index f3084cc..eb888c6 100644
---- a/fs/splice.c
-+++ b/fs/splice.c
+Index: linux-4.14/fs/splice.c
+===================================================================
+--- linux-4.14.orig/fs/splice.c
++++ linux-4.14/fs/splice.c
 @@ -837,8 +837,8 @@ EXPORT_SYMBOL(generic_splice_sendpage);
  /*
   * Attempt to initiate a splice from pipe to file.
@@ -174,7 +174,7 @@ index f3084cc..eb888c6 100644
  {
  	ssize_t (*splice_write)(struct pipe_inode_info *, struct file *,
  				loff_t *, size_t, unsigned int);
-@@ -854,9 +854,9 @@ static long do_splice_from(struct pipe_inode_info *pipe, struct file *out,
+@@ -854,9 +854,9 @@ static long do_splice_from(struct pipe_i
  /*
   * Attempt to initiate a splice from a file to a pipe.
   */
@@ -187,11 +187,11 @@ index f3084cc..eb888c6 100644
  {
  	ssize_t (*splice_read)(struct file *, loff_t *,
  			       struct pipe_inode_info *, size_t, unsigned int);
-diff --git a/fs/sync.c b/fs/sync.c
-index a576aa2..eb61780 100644
---- a/fs/sync.c
-+++ b/fs/sync.c
-@@ -27,7 +27,7 @@
+Index: linux-4.14/fs/sync.c
+===================================================================
+--- linux-4.14.orig/fs/sync.c
++++ linux-4.14/fs/sync.c
+@@ -28,7 +28,7 @@
   * wait == 1 case since in that case write_inode() functions do
   * sync_dirty_buffer() and thus effectively write one block at a time.
   */
@@ -200,11 +200,11 @@ index a576aa2..eb61780 100644
  {
  	if (wait)
  		sync_inodes_sb(sb);
-diff --git a/include/linux/file.h b/include/linux/file.h
-index 61eb82c..e700888 100644
---- a/include/linux/file.h
-+++ b/include/linux/file.h
-@@ -19,6 +19,7 @@ struct dentry;
+Index: linux-4.14/include/linux/file.h
+===================================================================
+--- linux-4.14.orig/include/linux/file.h
++++ linux-4.14/include/linux/file.h
+@@ -20,6 +20,7 @@ struct dentry;
  struct path;
  extern struct file *alloc_file(const struct path *, fmode_t mode,
  	const struct file_operations *fop);
@@ -212,11 +212,11 @@ index 61eb82c..e700888 100644
  
  static inline void fput_light(struct file *file, int fput_needed)
  {
-diff --git a/include/linux/fs.h b/include/linux/fs.h
-index 339e737..b024533 100644
---- a/include/linux/fs.h
-+++ b/include/linux/fs.h
-@@ -1264,6 +1264,7 @@ extern void fasync_free(struct fasync_struct *);
+Index: linux-4.14/include/linux/fs.h
+===================================================================
+--- linux-4.14.orig/include/linux/fs.h
++++ linux-4.14/include/linux/fs.h
+@@ -1265,6 +1265,7 @@ extern void fasync_free(struct fasync_st
  /* can be called from interrupts */
  extern void kill_fasync(struct fasync_struct **, int, int);
  
@@ -224,7 +224,7 @@ index 339e737..b024533 100644
  extern void __f_setown(struct file *filp, struct pid *, enum pid_type, int force);
  extern int f_setown(struct file *filp, unsigned long arg, int force);
  extern void f_delown(struct file *filp);
-@@ -1710,6 +1711,7 @@ struct file_operations {
+@@ -1712,6 +1713,7 @@ struct file_operations {
  	ssize_t (*sendpage) (struct file *, struct page *, int, size_t, loff_t *, int);
  	unsigned long (*get_unmapped_area)(struct file *, unsigned long, unsigned long, unsigned long, unsigned long);
  	int (*check_flags)(int);
@@ -232,7 +232,7 @@ index 339e737..b024533 100644
  	int (*flock) (struct file *, int, struct file_lock *);
  	ssize_t (*splice_write)(struct pipe_inode_info *, struct file *, loff_t *, size_t, unsigned int);
  	ssize_t (*splice_read)(struct file *, loff_t *, struct pipe_inode_info *, size_t, unsigned int);
-@@ -1780,6 +1782,12 @@ ssize_t rw_copy_check_uvector(int type, const struct iovec __user * uvector,
+@@ -1782,6 +1784,12 @@ ssize_t rw_copy_check_uvector(int type,
  			      struct iovec *fast_pointer,
  			      struct iovec **ret_pointer);
  
@@ -245,7 +245,7 @@ index 339e737..b024533 100644
  extern ssize_t __vfs_read(struct file *, char __user *, size_t, loff_t *);
  extern ssize_t vfs_read(struct file *, char __user *, size_t, loff_t *);
  extern ssize_t vfs_write(struct file *, const char __user *, size_t, loff_t *);
-@@ -2182,6 +2190,7 @@ extern int current_umask(void);
+@@ -2184,6 +2192,7 @@ extern int current_umask(void);
  extern void ihold(struct inode * inode);
  extern void iput(struct inode *);
  extern int generic_update_time(struct inode *, struct timespec *, int);
@@ -253,7 +253,7 @@ index 339e737..b024533 100644
  
  /* /sys/fs */
  extern struct kobject *fs_kobj;
-@@ -2462,6 +2471,7 @@ static inline bool sb_is_blkdev_sb(struct super_block *sb)
+@@ -2464,6 +2473,7 @@ static inline bool sb_is_blkdev_sb(struc
  	return false;
  }
  #endif
@@ -261,11 +261,11 @@ index 339e737..b024533 100644
  extern int sync_filesystem(struct super_block *);
  extern const struct file_operations def_blk_fops;
  extern const struct file_operations def_chr_fops;
-diff --git a/include/linux/mnt_namespace.h b/include/linux/mnt_namespace.h
-index 12b2ab5..8b810d1 100644
---- a/include/linux/mnt_namespace.h
-+++ b/include/linux/mnt_namespace.h
-@@ -5,11 +5,14 @@
+Index: linux-4.14/include/linux/mnt_namespace.h
+===================================================================
+--- linux-4.14.orig/include/linux/mnt_namespace.h
++++ linux-4.14/include/linux/mnt_namespace.h
+@@ -6,11 +6,14 @@
  struct mnt_namespace;
  struct fs_struct;
  struct user_namespace;
@@ -280,11 +280,11 @@ index 12b2ab5..8b810d1 100644
  extern const struct file_operations proc_mounts_operations;
  extern const struct file_operations proc_mountinfo_operations;
  extern const struct file_operations proc_mountstats_operations;
-diff --git a/include/linux/splice.h b/include/linux/splice.h
-index db42746..12f3a5a 100644
---- a/include/linux/splice.h
-+++ b/include/linux/splice.h
-@@ -86,4 +86,10 @@ extern void splice_shrink_spd(struct splice_pipe_desc *);
+Index: linux-4.14/include/linux/splice.h
+===================================================================
+--- linux-4.14.orig/include/linux/splice.h
++++ linux-4.14/include/linux/splice.h
+@@ -87,4 +87,10 @@ extern void splice_shrink_spd(struct spl
  
  extern const struct pipe_buf_operations page_cache_pipe_buf_ops;
  extern const struct pipe_buf_operations default_pipe_buf_ops;

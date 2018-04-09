@@ -16,8 +16,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/platform/x86/asus-wmi.c | 9 +++++++++
  1 file changed, 9 insertions(+)
 
---- a/drivers/platform/x86/asus-wmi.c
-+++ b/drivers/platform/x86/asus-wmi.c
+Index: linux-4.14/drivers/platform/x86/asus-wmi.c
+===================================================================
+--- linux-4.14.orig/drivers/platform/x86/asus-wmi.c
++++ linux-4.14/drivers/platform/x86/asus-wmi.c
 @@ -1905,6 +1905,9 @@ static int show_dsts(struct seq_file *m,
  	int err;
  	u32 retval = -1;

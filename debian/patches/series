@@ -12,7 +12,7 @@ debian/tools-perf-version.patch
 debian/tools-perf-install.patch
 
 # Fixes/improvements to firmware loading
-features/all/drivers-media-dvb-usb-af9005-request_firmware.patch
+#features/all/drivers-media-dvb-usb-af9005-request_firmware.patch
 debian/iwlwifi-do-not-request-unreleased-firmware.patch
 bugfix/all/firmware_class-log-every-success-and-failure.patch
 bugfix/all/firmware-remove-redundant-log-messages-from-drivers.patch
@@ -68,11 +68,11 @@ bugfix/arm/arm-dts-exynos-add-dwc3-susphy-quirk.patch
 features/mips/MIPS-increase-MAX-PHYSMEM-BITS-on-Loongson-3-only.patch
 features/mips/MIPS-Loongson-3-Add-Loongson-LS3A-RS780E-1-way-machi.patch
 features/x86/x86-memtest-WARN-if-bad-RAM-found.patch
-features/x86/x86-make-x32-syscall-support-conditional.patch
+#features/x86/x86-make-x32-syscall-support-conditional.patch
 
 # Miscellaneous bug fixes
-bugfix/all/kbuild-use-nostdinc-in-compile-tests.patch
-bugfix/all/disable-some-marvell-phys.patch
+#bugfix/all/kbuild-use-nostdinc-in-compile-tests.patch
+#bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/partially-revert-usb-kconfig-using-select-for-usb_co.patch
 bugfix/all/kbuild-include-addtree-remove-quotes-before-matching-path.patch

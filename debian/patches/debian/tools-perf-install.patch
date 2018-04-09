@@ -5,8 +5,10 @@ Forwarded: no
 
 [bwh: Forward-ported to 4.13]
 
---- a/tools/perf/Makefile.perf
-+++ b/tools/perf/Makefile.perf
+Index: linux-4.14/tools/perf/Makefile.perf
+===================================================================
+--- linux-4.14.orig/tools/perf/Makefile.perf
++++ linux-4.14/tools/perf/Makefile.perf
 @@ -750,8 +750,8 @@ endif
  ifndef NO_LIBPERL
  	$(call QUIET_INSTALL, perl-scripts) \

@@ -18,11 +18,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/char/mem.c       | 2 ++
  2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/arch/x86/kernel/ioport.c b/arch/x86/kernel/ioport.c
-index 9c3cf0944bce..4a613fed94b6 100644
---- a/arch/x86/kernel/ioport.c
-+++ b/arch/x86/kernel/ioport.c
-@@ -30,7 +30,7 @@ asmlinkage long sys_ioperm(unsigned long from, unsigned long num, int turn_on)
+Index: linux-4.14/arch/x86/kernel/ioport.c
+===================================================================
+--- linux-4.14.orig/arch/x86/kernel/ioport.c
++++ linux-4.14/arch/x86/kernel/ioport.c
+@@ -31,7 +31,7 @@ asmlinkage long sys_ioperm(unsigned long
  
  	if ((from + num <= from) || (from + num > IO_BITMAP_BITS))
  		return -EINVAL;
@@ -31,7 +31,7 @@ index 9c3cf0944bce..4a613fed94b6 100644
  		return -EPERM;
  
  	/*
-@@ -120,7 +120,7 @@ SYSCALL_DEFINE1(iopl, unsigned int, level)
+@@ -121,7 +121,7 @@ SYSCALL_DEFINE1(iopl, unsigned int, leve
  		return -EINVAL;
  	/* Trying to gain more privileges? */
  	if (level > old) {
@@ -40,11 +40,11 @@ index 9c3cf0944bce..4a613fed94b6 100644
  			return -EPERM;
  	}
  	regs->flags = (regs->flags & ~X86_EFLAGS_IOPL) |
-diff --git a/drivers/char/mem.c b/drivers/char/mem.c
-index f8144049bda3..9afebb60550f 100644
---- a/drivers/char/mem.c
-+++ b/drivers/char/mem.c
-@@ -741,6 +741,8 @@ static loff_t memory_lseek(struct file *file, loff_t offset, int orig)
+Index: linux-4.14/drivers/char/mem.c
+===================================================================
+--- linux-4.14.orig/drivers/char/mem.c
++++ linux-4.14/drivers/char/mem.c
+@@ -786,6 +786,8 @@ static loff_t memory_lseek(struct file *
  
  static int open_port(struct inode *inode, struct file *filp)
  {

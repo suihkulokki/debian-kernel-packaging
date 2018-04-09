@@ -14,9 +14,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/char/mem.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
---- a/drivers/char/mem.c
-+++ b/drivers/char/mem.c
-@@ -179,6 +179,9 @@ static ssize_t write_mem(struct file *fi
+Index: linux-4.14/drivers/char/mem.c
+===================================================================
+--- linux-4.14.orig/drivers/char/mem.c
++++ linux-4.14/drivers/char/mem.c
+@@ -197,6 +197,9 @@ static ssize_t write_mem(struct file *fi
  	if (p != *ppos)
  		return -EFBIG;
  
@@ -26,7 +28,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	if (!valid_phys_addr_range(p, count))
  		return -EFAULT;
  
-@@ -540,6 +543,9 @@ static ssize_t write_kmem(struct file *f
+@@ -558,6 +561,9 @@ static ssize_t write_kmem(struct file *f
  	char *kbuf; /* k-addr because vwrite() takes vmlist_lock rwlock */
  	int err = 0;
  

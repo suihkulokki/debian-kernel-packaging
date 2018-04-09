@@ -8,9 +8,11 @@ Origin: https://github.com/mjg59/linux/commit/02d999574936dd234a508c0112a0200c13
  arch/x86/boot/compressed/eboot.c | 22 ++++++++++++++++++++++
  1 file changed, 22 insertions(+)
 
---- a/arch/x86/boot/compressed/eboot.c
-+++ b/arch/x86/boot/compressed/eboot.c
-@@ -604,6 +604,22 @@ void setup_graphics(struct boot_params *
+Index: linux-4.14/arch/x86/boot/compressed/eboot.c
+===================================================================
+--- linux-4.14.orig/arch/x86/boot/compressed/eboot.c
++++ linux-4.14/arch/x86/boot/compressed/eboot.c
+@@ -606,6 +606,22 @@ void setup_graphics(struct boot_params *
  	}
  }
  
@@ -33,7 +35,7 @@ Origin: https://github.com/mjg59/linux/commit/02d999574936dd234a508c0112a0200c13
  /*
   * Because the x86 boot code expects to be passed a boot_params we
   * need to create one ourselves (usually the bootloader would create
-@@ -989,6 +1005,12 @@ struct boot_params *efi_main(struct efi_
+@@ -991,6 +1007,12 @@ struct boot_params *efi_main(struct efi_
  		setup_boot_services32(efi_early);
  
  	/*

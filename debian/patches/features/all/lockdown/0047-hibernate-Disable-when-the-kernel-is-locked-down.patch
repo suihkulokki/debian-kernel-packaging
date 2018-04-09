@@ -14,11 +14,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/power/hibernate.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/kernel/power/hibernate.c b/kernel/power/hibernate.c
-index a8b978c35a6a..50cca5dcb62f 100644
---- a/kernel/power/hibernate.c
-+++ b/kernel/power/hibernate.c
-@@ -70,7 +70,7 @@ static const struct platform_hibernation_ops *hibernation_ops;
+Index: linux-4.14/kernel/power/hibernate.c
+===================================================================
+--- linux-4.14.orig/kernel/power/hibernate.c
++++ linux-4.14/kernel/power/hibernate.c
+@@ -70,7 +70,7 @@ static const struct platform_hibernation
  
  bool hibernation_available(void)
  {

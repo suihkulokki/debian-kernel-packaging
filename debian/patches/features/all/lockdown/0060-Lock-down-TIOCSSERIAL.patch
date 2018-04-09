@@ -14,8 +14,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/tty/serial/serial_core.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
---- a/drivers/tty/serial/serial_core.c
-+++ b/drivers/tty/serial/serial_core.c
+Index: linux-4.14/drivers/tty/serial/serial_core.c
+===================================================================
+--- linux-4.14.orig/drivers/tty/serial/serial_core.c
++++ linux-4.14/drivers/tty/serial/serial_core.c
 @@ -842,6 +842,12 @@ static int uart_set_info(struct tty_stru
  	new_flags = (__force upf_t)new_info->flags;
  	old_custom_divisor = uport->custom_divisor;

@@ -13,11 +13,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/power/user.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/kernel/power/user.c b/kernel/power/user.c
-index 22df9f7ff672..e4b926d329b7 100644
---- a/kernel/power/user.c
-+++ b/kernel/power/user.c
-@@ -52,6 +52,9 @@ static int snapshot_open(struct inode *inode, struct file *filp)
+Index: linux-4.14/kernel/power/user.c
+===================================================================
+--- linux-4.14.orig/kernel/power/user.c
++++ linux-4.14/kernel/power/user.c
+@@ -52,6 +52,9 @@ static int snapshot_open(struct inode *i
  	if (!hibernation_available())
  		return -EPERM;
  

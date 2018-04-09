@@ -19,9 +19,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/debug/kdb/kdb_main.c |  2 +-
  7 files changed, 68 insertions(+), 8 deletions(-)
 
---- a/arch/x86/Kconfig
-+++ b/arch/x86/Kconfig
-@@ -1898,6 +1898,16 @@ config EFI_SECURE_BOOT_LOCK_DOWN
+Index: linux-4.14/arch/x86/Kconfig
+===================================================================
+--- linux-4.14.orig/arch/x86/Kconfig
++++ linux-4.14/arch/x86/Kconfig
+@@ -1913,6 +1913,16 @@ config EFI_SECURE_BOOT_LOCK_DOWN
  	  image.  Say Y here to automatically lock down the kernel when a
  	  system boots with UEFI Secure Boot enabled.
  
@@ -38,8 +40,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  config SECCOMP
  	def_bool y
  	prompt "Enable seccomp to safely compute untrusted bytecode"
---- a/arch/x86/kernel/setup.c
-+++ b/arch/x86/kernel/setup.c
+Index: linux-4.14/arch/x86/kernel/setup.c
+===================================================================
+--- linux-4.14.orig/arch/x86/kernel/setup.c
++++ linux-4.14/arch/x86/kernel/setup.c
 @@ -72,6 +72,11 @@
  #include <linux/mem_encrypt.h>
  #include <linux/security.h>
@@ -52,7 +56,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  #include <linux/usb/xhci-dbgp.h>
  #include <video/edid.h>
  
-@@ -1353,6 +1358,32 @@ void __init i386_reserve_resources(void)
+@@ -1337,6 +1342,32 @@ void __init i386_reserve_resources(void)
  
  #endif /* CONFIG_X86_32 */
  
@@ -85,8 +89,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  static struct notifier_block kernel_offset_notifier = {
  	.notifier_call = dump_kernel_offset
  };
---- a/drivers/input/misc/uinput.c
-+++ b/drivers/input/misc/uinput.c
+Index: linux-4.14/drivers/input/misc/uinput.c
+===================================================================
+--- linux-4.14.orig/drivers/input/misc/uinput.c
++++ linux-4.14/drivers/input/misc/uinput.c
 @@ -408,6 +408,7 @@ static int uinput_allocate_device(struct
  	if (!udev->dev)
  		return -ENOMEM;
@@ -95,9 +101,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	udev->dev->event = uinput_dev_event;
  	input_set_drvdata(udev->dev, udev);
  
---- a/drivers/tty/sysrq.c
-+++ b/drivers/tty/sysrq.c
-@@ -481,6 +481,7 @@ static struct sysrq_key_op *sysrq_key_ta
+Index: linux-4.14/drivers/tty/sysrq.c
+===================================================================
+--- linux-4.14.orig/drivers/tty/sysrq.c
++++ linux-4.14/drivers/tty/sysrq.c
+@@ -487,6 +487,7 @@ static struct sysrq_key_op *sysrq_key_ta
  	/* x: May be registered on mips for TLB dump */
  	/* x: May be registered on ppc/powerpc for xmon */
  	/* x: May be registered on sparc64 for global PMU dump */
@@ -105,7 +113,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	NULL,				/* x */
  	/* y: May be registered on sparc64 for global register dump */
  	NULL,				/* y */
-@@ -524,7 +525,7 @@ static void __sysrq_put_key_op(int key,
+@@ -530,7 +531,7 @@ static void __sysrq_put_key_op(int key,
                  sysrq_key_table[i] = op_p;
  }
  
@@ -114,7 +122,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  {
  	struct sysrq_key_op *op_p;
  	int orig_log_level;
-@@ -544,11 +545,15 @@ void __handle_sysrq(int key, bool check_
+@@ -550,11 +551,15 @@ void __handle_sysrq(int key, bool check_
  
          op_p = __sysrq_get_key_op(key);
          if (op_p) {
@@ -131,7 +139,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  			pr_cont("%s\n", op_p->action_msg);
  			console_loglevel = orig_log_level;
  			op_p->handler(key);
-@@ -580,7 +585,7 @@ void __handle_sysrq(int key, bool check_
+@@ -586,7 +591,7 @@ void __handle_sysrq(int key, bool check_
  void handle_sysrq(int key)
  {
  	if (sysrq_on())
@@ -140,7 +148,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  }
  EXPORT_SYMBOL(handle_sysrq);
  
-@@ -661,7 +666,7 @@ static void sysrq_do_reset(unsigned long
+@@ -667,7 +672,7 @@ static void sysrq_do_reset(unsigned long
  static void sysrq_handle_reset_request(struct sysrq_state *state)
  {
  	if (state->reset_requested)
@@ -149,7 +157,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  
  	if (sysrq_reset_downtime_ms)
  		mod_timer(&state->keyreset_timer,
-@@ -812,8 +817,10 @@ static bool sysrq_handle_keypress(struct
+@@ -818,8 +823,10 @@ static bool sysrq_handle_keypress(struct
  
  	default:
  		if (sysrq->active && value && value != 2) {
@@ -161,7 +169,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  		}
  		break;
  	}
-@@ -1097,7 +1104,7 @@ static ssize_t write_sysrq_trigger(struc
+@@ -1103,7 +1110,7 @@ static ssize_t write_sysrq_trigger(struc
  
  		if (get_user(c, buf))
  			return -EFAULT;
@@ -170,8 +178,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	}
  
  	return count;
---- a/include/linux/input.h
-+++ b/include/linux/input.h
+Index: linux-4.14/include/linux/input.h
+===================================================================
+--- linux-4.14.orig/include/linux/input.h
++++ linux-4.14/include/linux/input.h
 @@ -42,6 +42,7 @@ struct input_value {
   * @phys: physical path to the device in the system hierarchy
   * @uniq: unique identification code for the device (if device has it)
@@ -198,9 +208,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  /*
   * Verify that we are in sync with input_device_id mod_devicetable.h #defines
   */
---- a/include/linux/sysrq.h
-+++ b/include/linux/sysrq.h
-@@ -28,6 +28,8 @@
+Index: linux-4.14/include/linux/sysrq.h
+===================================================================
+--- linux-4.14.orig/include/linux/sysrq.h
++++ linux-4.14/include/linux/sysrq.h
+@@ -29,6 +29,8 @@
  #define SYSRQ_ENABLE_BOOT	0x0080
  #define SYSRQ_ENABLE_RTNICE	0x0100
  
@@ -209,7 +221,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  struct sysrq_key_op {
  	void (*handler)(int);
  	char *help_msg;
-@@ -42,8 +44,12 @@ struct sysrq_key_op {
+@@ -43,8 +45,12 @@ struct sysrq_key_op {
   * are available -- else NULL's).
   */
  
@@ -223,8 +235,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  int register_sysrq_key(int key, struct sysrq_key_op *op);
  int unregister_sysrq_key(int key, struct sysrq_key_op *op);
  struct sysrq_key_op *__sysrq_get_key_op(int key);
---- a/kernel/debug/kdb/kdb_main.c
-+++ b/kernel/debug/kdb/kdb_main.c
+Index: linux-4.14/kernel/debug/kdb/kdb_main.c
+===================================================================
+--- linux-4.14.orig/kernel/debug/kdb/kdb_main.c
++++ linux-4.14/kernel/debug/kdb/kdb_main.c
 @@ -1970,7 +1970,7 @@ static int kdb_sr(int argc, const char *
  		return KDB_ARGCOUNT;
  

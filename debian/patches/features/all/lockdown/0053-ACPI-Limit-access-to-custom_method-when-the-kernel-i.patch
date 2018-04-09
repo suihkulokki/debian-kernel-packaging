@@ -14,11 +14,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/acpi/custom_method.c | 3 +++
  1 file changed, 3 insertions(+)
 
-diff --git a/drivers/acpi/custom_method.c b/drivers/acpi/custom_method.c
-index c68e72414a67..e4d721c330c0 100644
---- a/drivers/acpi/custom_method.c
-+++ b/drivers/acpi/custom_method.c
-@@ -29,6 +29,9 @@ static ssize_t cm_write(struct file *file, const char __user * user_buf,
+Index: linux-4.14/drivers/acpi/custom_method.c
+===================================================================
+--- linux-4.14.orig/drivers/acpi/custom_method.c
++++ linux-4.14/drivers/acpi/custom_method.c
+@@ -29,6 +29,9 @@ static ssize_t cm_write(struct file *fil
  	struct acpi_table_header table;
  	acpi_status status;
  

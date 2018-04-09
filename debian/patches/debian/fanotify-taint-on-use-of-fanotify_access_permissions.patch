@@ -10,9 +10,11 @@ do about that.  So warn and taint the kernel if this feature is
 actually used.
 
 ---
---- a/fs/notify/fanotify/fanotify_user.c
-+++ b/fs/notify/fanotify/fanotify_user.c
-@@ -847,6 +847,14 @@ SYSCALL_DEFINE5(fanotify_mark, int, fano
+Index: linux-4.14/fs/notify/fanotify/fanotify_user.c
+===================================================================
+--- linux-4.14.orig/fs/notify/fanotify/fanotify_user.c
++++ linux-4.14/fs/notify/fanotify/fanotify_user.c
+@@ -863,6 +863,14 @@ SYSCALL_DEFINE5(fanotify_mark, int, fano
  #endif
  		return -EINVAL;
  

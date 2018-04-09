@@ -20,9 +20,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  5 files changed, 78 insertions(+)
  create mode 100644 security/lock_down.c
 
---- a/include/linux/kernel.h
-+++ b/include/linux/kernel.h
-@@ -287,6 +287,15 @@ static inline void refcount_error_report
+Index: linux-4.14/include/linux/kernel.h
+===================================================================
+--- linux-4.14.orig/include/linux/kernel.h
++++ linux-4.14/include/linux/kernel.h
+@@ -306,6 +306,15 @@ static inline void refcount_error_report
  { }
  #endif
  
@@ -38,8 +40,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  /* Internal, do not use. */
  int __must_check _kstrtoul(const char *s, unsigned int base, unsigned long *res);
  int __must_check _kstrtol(const char *s, unsigned int base, long *res);
---- a/include/linux/security.h
-+++ b/include/linux/security.h
+Index: linux-4.14/include/linux/security.h
+===================================================================
+--- linux-4.14.orig/include/linux/security.h
++++ linux-4.14/include/linux/security.h
 @@ -1753,5 +1753,16 @@ static inline void free_secdata(void *se
  { }
  #endif /* CONFIG_SECURITY */
@@ -57,9 +61,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
 +
  #endif /* ! __LINUX_SECURITY_H */
  
---- a/security/Kconfig
-+++ b/security/Kconfig
-@@ -214,6 +214,21 @@ config STATIC_USERMODEHELPER_PATH
+Index: linux-4.14/security/Kconfig
+===================================================================
+--- linux-4.14.orig/security/Kconfig
++++ linux-4.14/security/Kconfig
+@@ -226,6 +226,21 @@ config STATIC_USERMODEHELPER_PATH
  	  If you wish for all usermode helper programs to be disabled,
  	  specify an empty string here (i.e. "").
  
@@ -81,17 +87,21 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  source security/selinux/Kconfig
  source security/smack/Kconfig
  source security/tomoyo/Kconfig
---- a/security/Makefile
-+++ b/security/Makefile
-@@ -29,3 +29,6 @@ obj-$(CONFIG_CGROUP_DEVICE)		+= device_c
+Index: linux-4.14/security/Makefile
+===================================================================
+--- linux-4.14.orig/security/Makefile
++++ linux-4.14/security/Makefile
+@@ -30,3 +30,6 @@ obj-$(CONFIG_CGROUP_DEVICE)		+= device_c
  # Object integrity file lists
  subdir-$(CONFIG_INTEGRITY)		+= integrity
  obj-$(CONFIG_INTEGRITY)			+= integrity/
 +
 +# Allow the kernel to be locked down
 +obj-$(CONFIG_LOCK_DOWN_KERNEL)		+= lock_down.o
+Index: linux-4.14/security/lock_down.c
+===================================================================
 --- /dev/null
-+++ b/security/lock_down.c
++++ linux-4.14/security/lock_down.c
 @@ -0,0 +1,40 @@
 +/* Lock down the kernel
 + *

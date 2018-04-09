@@ -16,11 +16,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/kexec.c | 7 +++++++
  1 file changed, 7 insertions(+)
 
-diff --git a/kernel/kexec.c b/kernel/kexec.c
-index 980936a90ee6..46de8e6b42f4 100644
---- a/kernel/kexec.c
-+++ b/kernel/kexec.c
-@@ -194,6 +194,13 @@ SYSCALL_DEFINE4(kexec_load, unsigned long, entry, unsigned long, nr_segments,
+Index: linux-4.14/kernel/kexec.c
+===================================================================
+--- linux-4.14.orig/kernel/kexec.c
++++ linux-4.14/kernel/kexec.c
+@@ -202,6 +202,13 @@ SYSCALL_DEFINE4(kexec_load, unsigned lon
  		return -EPERM;
  
  	/*

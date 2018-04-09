@@ -18,9 +18,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/pci/syscall.c   | 2 +-
  3 files changed, 17 insertions(+), 2 deletions(-)
 
---- a/drivers/pci/pci-sysfs.c
-+++ b/drivers/pci/pci-sysfs.c
-@@ -754,6 +754,9 @@ static ssize_t pci_write_config(struct f
+Index: linux-4.14/drivers/pci/pci-sysfs.c
+===================================================================
+--- linux-4.14.orig/drivers/pci/pci-sysfs.c
++++ linux-4.14/drivers/pci/pci-sysfs.c
+@@ -889,6 +889,9 @@ static ssize_t pci_write_config(struct f
  	loff_t init_off = off;
  	u8 *data = (u8 *) buf;
  
@@ -30,7 +32,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	if (off > dev->cfg_size)
  		return 0;
  	if (off + count > dev->cfg_size) {
-@@ -1048,6 +1051,9 @@ static int pci_mmap_resource(struct kobj
+@@ -1183,6 +1186,9 @@ static int pci_mmap_resource(struct kobj
  	enum pci_mmap_state mmap_type;
  	struct resource *res = &pdev->resource[bar];
  
@@ -40,7 +42,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	if (res->flags & IORESOURCE_MEM && iomem_is_exclusive(res->start))
  		return -EINVAL;
  
-@@ -1131,6 +1137,9 @@ static ssize_t pci_write_resource_io(str
+@@ -1263,6 +1269,9 @@ static ssize_t pci_write_resource_io(str
  				     struct bin_attribute *attr, char *buf,
  				     loff_t off, size_t count)
  {
@@ -50,9 +52,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	return pci_resource_io(filp, kobj, attr, buf, off, count, true);
  }
  
---- a/drivers/pci/proc.c
-+++ b/drivers/pci/proc.c
-@@ -116,6 +116,9 @@ static ssize_t proc_bus_pci_write(struct
+Index: linux-4.14/drivers/pci/proc.c
+===================================================================
+--- linux-4.14.orig/drivers/pci/proc.c
++++ linux-4.14/drivers/pci/proc.c
+@@ -117,6 +117,9 @@ static ssize_t proc_bus_pci_write(struct
  	int size = dev->cfg_size;
  	int cnt;
  
@@ -62,7 +66,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	if (pos >= size)
  		return 0;
  	if (nbytes >= size)
-@@ -195,6 +198,9 @@ static long proc_bus_pci_ioctl(struct fi
+@@ -196,6 +199,9 @@ static long proc_bus_pci_ioctl(struct fi
  #endif /* HAVE_PCI_MMAP */
  	int ret = 0;
  
@@ -72,7 +76,7 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  	switch (cmd) {
  	case PCIIOC_CONTROLLER:
  		ret = pci_domain_nr(dev->bus);
-@@ -236,7 +242,7 @@ static int proc_bus_pci_mmap(struct file
+@@ -237,7 +243,7 @@ static int proc_bus_pci_mmap(struct file
  	struct pci_filp_private *fpriv = file->private_data;
  	int i, ret, write_combine = 0, res_bit = IORESOURCE_MEM;
  
@@ -81,9 +85,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  		return -EPERM;
  
  	if (fpriv->mmap_state == pci_mmap_io) {
---- a/drivers/pci/syscall.c
-+++ b/drivers/pci/syscall.c
-@@ -92,7 +92,7 @@ SYSCALL_DEFINE5(pciconfig_write, unsigne
+Index: linux-4.14/drivers/pci/syscall.c
+===================================================================
+--- linux-4.14.orig/drivers/pci/syscall.c
++++ linux-4.14/drivers/pci/syscall.c
+@@ -93,7 +93,7 @@ SYSCALL_DEFINE5(pciconfig_write, unsigne
  	u32 dword;
  	int err = 0;
  

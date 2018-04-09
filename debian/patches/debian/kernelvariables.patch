@@ -12,9 +12,11 @@ also CROSS_COMPILE, CFLAGS_KERNEL and CFLAGS_MODULE.
 This file can only be read after we establish the build tree, and all
 use of $(ARCH) needs to be moved after this.
 
---- a/Makefile
-+++ b/Makefile
-@@ -255,42 +255,6 @@ SUBARCH := $(shell uname -m | sed -e s/i
+Index: linux-4.14/Makefile
+===================================================================
+--- linux-4.14.orig/Makefile
++++ linux-4.14/Makefile
+@@ -313,42 +313,6 @@ SUBARCH := $(shell uname -m | sed -e s/i
  ARCH		?= $(SUBARCH)
  CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
  
@@ -57,9 +59,9 @@ use of $(ARCH) needs to be moved after this.
  KCONFIG_CONFIG	?= .config
  export KCONFIG_CONFIG
  
-@@ -373,6 +337,44 @@ LDFLAGS_vmlinux =
- CFLAGS_GCOV	:= -fprofile-arcs -ftest-coverage -fno-tree-loop-im $(call cc-disable-warning,maybe-uninitialized,)
- CFLAGS_KCOV	:= $(call cc-option,-fsanitize-coverage=trace-pc,)
+@@ -960,6 +924,44 @@ ifdef CONFIG_STACK_VALIDATION
+   endif
+ endif
  
 +-include $(obj)/.kernelvariables
 +
@@ -100,5 +102,5 @@ use of $(ARCH) needs to be moved after this.
 +       hdr-arch  := m68k
 +endif
  
- # Use USERINCLUDE when you must reference the UAPI directories only.
- USERINCLUDE    := \
+ ifeq ($(KBUILD_EXTMOD),)
+ core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/

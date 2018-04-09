@@ -11,8 +11,10 @@ information by WARNing about this, but we do still want to hear about
 other W+X cases.  So add a condition to the WARN_ON.
 
 ---
---- a/arch/x86/mm/dump_pagetables.c
-+++ b/arch/x86/mm/dump_pagetables.c
+Index: linux-4.14/arch/x86/mm/dump_pagetables.c
+===================================================================
+--- linux-4.14.orig/arch/x86/mm/dump_pagetables.c
++++ linux-4.14/arch/x86/mm/dump_pagetables.c
 @@ -18,6 +18,7 @@
  #include <linux/init.h>
  #include <linux/sched.h>
@@ -21,7 +23,7 @@ other W+X cases.  So add a condition to the WARN_ON.
  
  #include <asm/pgtable.h>
  
-@@ -231,7 +232,7 @@ static void note_page(struct seq_file *m
+@@ -260,7 +261,7 @@ static void note_page(struct seq_file *m
  		pgprotval_t pr = pgprot_val(st->current_prot);
  
  		if (st->check_wx && (pr & _PAGE_RW) && !(pr & _PAGE_NX)) {

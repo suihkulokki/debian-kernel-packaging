@@ -21,9 +21,11 @@ This does not cover the case where we fall back to a user-mode helper
 NOTE: hw-detect will depend on the "firmware: failed to load %s (%d)\n"
 format to detect missing firmware.
 ---
---- a/drivers/base/firmware_class.c
-+++ b/drivers/base/firmware_class.c
-@@ -450,21 +450,22 @@ fw_get_filesystem_firmware(struct device
+Index: linux-4.14/drivers/base/firmware_class.c
+===================================================================
+--- linux-4.14.orig/drivers/base/firmware_class.c
++++ linux-4.14/drivers/base/firmware_class.c
+@@ -418,21 +418,22 @@ fw_get_filesystem_firmware(struct device
  		rc = kernel_read_file_from_path(path, &buf->data, &size, msize,
  						id);
  		if (rc) {
@@ -53,7 +55,7 @@ format to detect missing firmware.
  	return rc;
  }
  
-@@ -1112,7 +1113,7 @@ static int fw_load_from_user_helper(stru
+@@ -1083,7 +1084,7 @@ static int fw_load_from_user_helper(stru
  	if (opt_flags & FW_OPT_NOWAIT) {
  		timeout = usermodehelper_read_lock_wait(timeout);
  		if (!timeout) {

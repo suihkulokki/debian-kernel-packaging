@@ -20,11 +20,11 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  arch/x86/kernel/kexec-bzimage64.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/x86/kernel/kexec-bzimage64.c b/arch/x86/kernel/kexec-bzimage64.c
-index d0a814a9d96a..3551bcaa1eaf 100644
---- a/arch/x86/kernel/kexec-bzimage64.c
-+++ b/arch/x86/kernel/kexec-bzimage64.c
-@@ -179,6 +179,7 @@ setup_efi_state(struct boot_params *params, unsigned long params_load_addr,
+Index: linux-4.14/arch/x86/kernel/kexec-bzimage64.c
+===================================================================
+--- linux-4.14.orig/arch/x86/kernel/kexec-bzimage64.c
++++ linux-4.14/arch/x86/kernel/kexec-bzimage64.c
+@@ -179,6 +179,7 @@ setup_efi_state(struct boot_params *para
  	if (efi_enabled(EFI_OLD_MEMMAP))
  		return 0;
  
