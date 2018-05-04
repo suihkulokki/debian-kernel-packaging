@@ -83,7 +83,7 @@ features/armhf/meson8/0006-ARM-dts-meson8b-add-the-I2C-clocks.patch
 # Miscellaneous bug fixes
 bugfix/all/kbuild-use-nostdinc-in-compile-tests.patch
 bugfix/all/disable-some-marvell-phys.patch
-bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
+#bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/partially-revert-usb-kconfig-using-select-for-usb_co.patch
 bugfix/all/kbuild-include-addtree-remove-quotes-before-matching-path.patch
 debian/revert-objtool-fix-config_stack_validation-y-warning.patch
@@ -143,6 +143,6 @@ bugfix/all/tools-build-remove-bpf-run-time-check-at-build-time.patch
 bugfix/all/cpupower-bump-soname-version.patch
 bugfix/all/cpupower-fix-checks-for-cpu-existence.patch
 bugfix/all/lockdep-stub-nmi-watchdog-reset.patch
-bugfix/arm64/ARM64-dts-meson-reduce-odroid-c2-eMMC-maximum-rate.patch
+#bugfix/arm64/ARM64-dts-meson-reduce-odroid-c2-eMMC-maximum-rate.patch
 
 # ABI maintenance
