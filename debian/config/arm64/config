@@ -75,17 +75,6 @@ CONFIG_ACPI_PCI_SLOT=y
 CONFIG_ACPI_HED=y
 
 ##
-## file: drivers/acpi/apei/Kconfig
-##
-CONFIG_ACPI_APEI=y
-CONFIG_ACPI_APEI_GHES=y
-CONFIG_ACPI_APEI_PCIEAER=y
-CONFIG_ACPI_APEI_SEA=y
-# CONFIG_ACPI_APEI_MEMORY_FAILURE is not set
-CONFIG_ACPI_APEI_EINJ=m
-# CONFIG_ACPI_APEI_ERST_DEBUG is not set
-
-##
 ## file: drivers/acpi/nfit/Kconfig
 ##
 CONFIG_ACPI_NFIT=y
