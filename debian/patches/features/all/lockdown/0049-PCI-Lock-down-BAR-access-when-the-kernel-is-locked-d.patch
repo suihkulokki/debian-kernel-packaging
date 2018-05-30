@@ -18,10 +18,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/pci/syscall.c   | 2 +-
  3 files changed, 17 insertions(+), 2 deletions(-)
 
-Index: linux-4.14/drivers/pci/pci-sysfs.c
+Index: rpk-4.14/drivers/pci/pci-sysfs.c
 ===================================================================
---- linux-4.14.orig/drivers/pci/pci-sysfs.c
-+++ linux-4.14/drivers/pci/pci-sysfs.c
+--- rpk-4.14.orig/drivers/pci/pci-sysfs.c
++++ rpk-4.14/drivers/pci/pci-sysfs.c
 @@ -889,6 +889,9 @@ static ssize_t pci_write_config(struct f
  	loff_t init_off = off;
  	u8 *data = (u8 *) buf;
@@ -52,10 +52,10 @@ Index: linux-4.14/drivers/pci/pci-sysfs.c
  	return pci_resource_io(filp, kobj, attr, buf, off, count, true);
  }
  
-Index: linux-4.14/drivers/pci/proc.c
+Index: rpk-4.14/drivers/pci/proc.c
 ===================================================================
---- linux-4.14.orig/drivers/pci/proc.c
-+++ linux-4.14/drivers/pci/proc.c
+--- rpk-4.14.orig/drivers/pci/proc.c
++++ rpk-4.14/drivers/pci/proc.c
 @@ -117,6 +117,9 @@ static ssize_t proc_bus_pci_write(struct
  	int size = dev->cfg_size;
  	int cnt;
@@ -85,10 +85,10 @@ Index: linux-4.14/drivers/pci/proc.c
  		return -EPERM;
  
  	if (fpriv->mmap_state == pci_mmap_io) {
-Index: linux-4.14/drivers/pci/syscall.c
+Index: rpk-4.14/drivers/pci/syscall.c
 ===================================================================
---- linux-4.14.orig/drivers/pci/syscall.c
-+++ linux-4.14/drivers/pci/syscall.c
+--- rpk-4.14.orig/drivers/pci/syscall.c
++++ rpk-4.14/drivers/pci/syscall.c
 @@ -93,7 +93,7 @@ SYSCALL_DEFINE5(pciconfig_write, unsigne
  	u32 dword;
  	int err = 0;

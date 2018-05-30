@@ -23,10 +23,10 @@ Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
  arch/sh/boot/romimage/Makefile   |  4 ++--
  4 files changed, 18 insertions(+), 18 deletions(-)
 
-Index: linux-4.14/arch/sh/Makefile
+Index: rpk-4.14/arch/sh/Makefile
 ===================================================================
---- linux-4.14.orig/arch/sh/Makefile
-+++ linux-4.14/arch/sh/Makefile
+--- rpk-4.14.orig/arch/sh/Makefile
++++ rpk-4.14/arch/sh/Makefile
 @@ -115,16 +115,16 @@ KBUILD_DEFCONFIG	:= cayman_defconfig
  endif
  
@@ -49,10 +49,10 @@ Index: linux-4.14/arch/sh/Makefile
  
  head-y	:= arch/sh/kernel/head_$(BITS).o
  
-Index: linux-4.14/arch/sh/boot/Makefile
+Index: rpk-4.14/arch/sh/boot/Makefile
 ===================================================================
---- linux-4.14.orig/arch/sh/boot/Makefile
-+++ linux-4.14/arch/sh/boot/Makefile
+--- rpk-4.14.orig/arch/sh/boot/Makefile
++++ rpk-4.14/arch/sh/boot/Makefile
 @@ -19,12 +19,12 @@ CONFIG_ZERO_PAGE_OFFSET	?= 0x00001000
  CONFIG_ENTRY_OFFSET	?= 0x00001000
  CONFIG_PHYSICAL_START	?= $(CONFIG_MEMORY_START)
@@ -85,10 +85,10 @@ Index: linux-4.14/arch/sh/boot/Makefile
         CONFIG_PHYSICAL_START CONFIG_ZERO_PAGE_OFFSET CONFIG_ENTRY_OFFSET \
 -       KERNEL_MEMORY suffix-y
 +       KERNEL_MEMORY suffix_y
-Index: linux-4.14/arch/sh/boot/compressed/Makefile
+Index: rpk-4.14/arch/sh/boot/compressed/Makefile
 ===================================================================
---- linux-4.14.orig/arch/sh/boot/compressed/Makefile
-+++ linux-4.14/arch/sh/boot/compressed/Makefile
+--- rpk-4.14.orig/arch/sh/boot/compressed/Makefile
++++ rpk-4.14/arch/sh/boot/compressed/Makefile
 @@ -33,7 +33,7 @@ ORIG_CFLAGS := $(KBUILD_CFLAGS)
  KBUILD_CFLAGS = $(subst -pg, , $(ORIG_CFLAGS))
  endif
@@ -108,10 +108,10 @@ Index: linux-4.14/arch/sh/boot/compressed/Makefile
 -$(obj)/piggy.o: $(obj)/vmlinux.scr $(obj)/vmlinux.bin.$(suffix-y) FORCE
 +$(obj)/piggy.o: $(obj)/vmlinux.scr $(obj)/vmlinux.bin.$(suffix_y) FORCE
  	$(call if_changed,ld)
-Index: linux-4.14/arch/sh/boot/romimage/Makefile
+Index: rpk-4.14/arch/sh/boot/romimage/Makefile
 ===================================================================
---- linux-4.14.orig/arch/sh/boot/romimage/Makefile
-+++ linux-4.14/arch/sh/boot/romimage/Makefile
+--- rpk-4.14.orig/arch/sh/boot/romimage/Makefile
++++ rpk-4.14/arch/sh/boot/romimage/Makefile
 @@ -13,7 +13,7 @@ mmcif-obj-$(CONFIG_CPU_SUBTYPE_SH7724)	:
  load-$(CONFIG_ROMIMAGE_MMCIF)		:= $(mmcif-load-y)
  obj-$(CONFIG_ROMIMAGE_MMCIF)		:= $(mmcif-obj-y)

@@ -9,10 +9,10 @@ Loongson-3, define it conditionally.
 
 Note: this should be replace by upstream fix when available.
 
-Index: linux-4.14/arch/mips/include/asm/sparsemem.h
+Index: rpk-4.14/arch/mips/include/asm/sparsemem.h
 ===================================================================
---- linux-4.14.orig/arch/mips/include/asm/sparsemem.h
-+++ linux-4.14/arch/mips/include/asm/sparsemem.h
+--- rpk-4.14.orig/arch/mips/include/asm/sparsemem.h
++++ rpk-4.14/arch/mips/include/asm/sparsemem.h
 @@ -12,7 +12,12 @@
  #else
  # define SECTION_SIZE_BITS	28

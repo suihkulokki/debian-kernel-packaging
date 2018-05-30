@@ -14,10 +14,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/char/mem.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
-Index: linux-4.14/drivers/char/mem.c
+Index: rpk-4.14/drivers/char/mem.c
 ===================================================================
---- linux-4.14.orig/drivers/char/mem.c
-+++ linux-4.14/drivers/char/mem.c
+--- rpk-4.14.orig/drivers/char/mem.c
++++ rpk-4.14/drivers/char/mem.c
 @@ -197,6 +197,9 @@ static ssize_t write_mem(struct file *fi
  	if (p != *ppos)
  		return -EFBIG;

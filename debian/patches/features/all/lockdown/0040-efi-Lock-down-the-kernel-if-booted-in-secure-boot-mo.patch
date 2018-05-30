@@ -15,10 +15,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  arch/x86/kernel/setup.c |  8 +++++++-
  2 files changed, 19 insertions(+), 1 deletion(-)
 
-Index: linux-4.14/arch/x86/Kconfig
+Index: rpk-4.14/arch/x86/Kconfig
 ===================================================================
---- linux-4.14.orig/arch/x86/Kconfig
-+++ linux-4.14/arch/x86/Kconfig
+--- rpk-4.14.orig/arch/x86/Kconfig
++++ rpk-4.14/arch/x86/Kconfig
 @@ -1901,6 +1901,18 @@ config EFI_MIXED
  
  	   If unsure, say N.
@@ -38,10 +38,10 @@ Index: linux-4.14/arch/x86/Kconfig
  config SECCOMP
  	def_bool y
  	prompt "Enable seccomp to safely compute untrusted bytecode"
-Index: linux-4.14/arch/x86/kernel/setup.c
+Index: rpk-4.14/arch/x86/kernel/setup.c
 ===================================================================
---- linux-4.14.orig/arch/x86/kernel/setup.c
-+++ linux-4.14/arch/x86/kernel/setup.c
+--- rpk-4.14.orig/arch/x86/kernel/setup.c
++++ rpk-4.14/arch/x86/kernel/setup.c
 @@ -70,6 +70,7 @@
  #include <linux/tboot.h>
  #include <linux/jiffies.h>

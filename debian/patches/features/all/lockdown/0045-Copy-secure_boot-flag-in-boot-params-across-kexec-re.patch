@@ -20,10 +20,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  arch/x86/kernel/kexec-bzimage64.c | 1 +
  1 file changed, 1 insertion(+)
 
-Index: linux-4.14/arch/x86/kernel/kexec-bzimage64.c
+Index: rpk-4.14/arch/x86/kernel/kexec-bzimage64.c
 ===================================================================
---- linux-4.14.orig/arch/x86/kernel/kexec-bzimage64.c
-+++ linux-4.14/arch/x86/kernel/kexec-bzimage64.c
+--- rpk-4.14.orig/arch/x86/kernel/kexec-bzimage64.c
++++ rpk-4.14/arch/x86/kernel/kexec-bzimage64.c
 @@ -179,6 +179,7 @@ setup_efi_state(struct boot_params *para
  	if (efi_enabled(EFI_OLD_MEMMAP))
  		return 0;

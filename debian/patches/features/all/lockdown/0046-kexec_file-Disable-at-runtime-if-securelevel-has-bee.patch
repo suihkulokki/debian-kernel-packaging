@@ -16,10 +16,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/kexec_file.c | 6 ++++++
  1 file changed, 6 insertions(+)
 
-Index: linux-4.14/kernel/kexec_file.c
+Index: rpk-4.14/kernel/kexec_file.c
 ===================================================================
---- linux-4.14.orig/kernel/kexec_file.c
-+++ linux-4.14/kernel/kexec_file.c
+--- rpk-4.14.orig/kernel/kexec_file.c
++++ rpk-4.14/kernel/kexec_file.c
 @@ -255,6 +255,12 @@ SYSCALL_DEFINE5(kexec_file_load, int, ke
  	if (!capable(CAP_SYS_BOOT) || kexec_load_disabled)
  		return -EPERM;

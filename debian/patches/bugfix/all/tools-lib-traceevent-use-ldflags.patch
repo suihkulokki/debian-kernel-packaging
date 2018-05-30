@@ -5,10 +5,10 @@ Forwarded: no
 
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
-Index: linux-4.14/tools/lib/traceevent/Makefile
+Index: rpk-4.14/tools/lib/traceevent/Makefile
 ===================================================================
---- linux-4.14.orig/tools/lib/traceevent/Makefile
-+++ linux-4.14/tools/lib/traceevent/Makefile
+--- rpk-4.14.orig/tools/lib/traceevent/Makefile
++++ rpk-4.14/tools/lib/traceevent/Makefile
 @@ -174,7 +174,7 @@ $(TE_IN): force
  	$(Q)$(MAKE) $(build)=libtraceevent
  

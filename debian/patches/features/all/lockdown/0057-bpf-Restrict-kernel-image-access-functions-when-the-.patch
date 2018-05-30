@@ -16,10 +16,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/trace/bpf_trace.c | 11 +++++++++++
  1 file changed, 11 insertions(+)
 
-Index: linux-4.14/kernel/trace/bpf_trace.c
+Index: rpk-4.14/kernel/trace/bpf_trace.c
 ===================================================================
---- linux-4.14.orig/kernel/trace/bpf_trace.c
-+++ linux-4.14/kernel/trace/bpf_trace.c
+--- rpk-4.14.orig/kernel/trace/bpf_trace.c
++++ rpk-4.14/kernel/trace/bpf_trace.c
 @@ -65,6 +65,11 @@ BPF_CALL_3(bpf_probe_read, void *, dst,
  {
  	int ret;

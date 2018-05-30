@@ -27,10 +27,10 @@ Signed-off-by: Linn Crosetto <linn@hpe.com>
  include/linux/efi.h                     |  1 +
  7 files changed, 32 insertions(+), 2 deletions(-)
 
-Index: linux-4.14/arch/arm64/Kconfig
+Index: rpk-4.14/arch/arm64/Kconfig
 ===================================================================
---- linux-4.14.orig/arch/arm64/Kconfig
-+++ linux-4.14/arch/arm64/Kconfig
+--- rpk-4.14.orig/arch/arm64/Kconfig
++++ rpk-4.14/arch/arm64/Kconfig
 @@ -1123,6 +1123,18 @@ config EFI
  	  allow the kernel to be booted as an EFI application. This
  	  is only useful on systems that have UEFI firmware.
@@ -50,10 +50,10 @@ Index: linux-4.14/arch/arm64/Kconfig
  config DMI
  	bool "Enable support for SMBIOS (DMI) tables"
  	depends on EFI
-Index: linux-4.14/drivers/firmware/efi/arm-init.c
+Index: rpk-4.14/drivers/firmware/efi/arm-init.c
 ===================================================================
---- linux-4.14.orig/drivers/firmware/efi/arm-init.c
-+++ linux-4.14/drivers/firmware/efi/arm-init.c
+--- rpk-4.14.orig/drivers/firmware/efi/arm-init.c
++++ rpk-4.14/drivers/firmware/efi/arm-init.c
 @@ -21,6 +21,7 @@
  #include <linux/of_fdt.h>
  #include <linux/platform_device.h>
@@ -74,10 +74,10 @@ Index: linux-4.14/drivers/firmware/efi/arm-init.c
  	if (uefi_init() < 0) {
  		efi_memmap_unmap();
  		return;
-Index: linux-4.14/drivers/firmware/efi/efi.c
+Index: rpk-4.14/drivers/firmware/efi/efi.c
 ===================================================================
---- linux-4.14.orig/drivers/firmware/efi/efi.c
-+++ linux-4.14/drivers/firmware/efi/efi.c
+--- rpk-4.14.orig/drivers/firmware/efi/efi.c
++++ rpk-4.14/drivers/firmware/efi/efi.c
 @@ -633,7 +633,8 @@ static __initdata struct params fdt_para
  	UEFI_PARAM("MemMap Address", "linux,uefi-mmap-start", mmap),
  	UEFI_PARAM("MemMap Size", "linux,uefi-mmap-size", mmap_size),
@@ -88,10 +88,10 @@ Index: linux-4.14/drivers/firmware/efi/efi.c
  };
  
  static __initdata struct params xen_fdt_params[] = {
-Index: linux-4.14/drivers/firmware/efi/libstub/fdt.c
+Index: rpk-4.14/drivers/firmware/efi/libstub/fdt.c
 ===================================================================
---- linux-4.14.orig/drivers/firmware/efi/libstub/fdt.c
-+++ linux-4.14/drivers/firmware/efi/libstub/fdt.c
+--- rpk-4.14.orig/drivers/firmware/efi/libstub/fdt.c
++++ rpk-4.14/drivers/firmware/efi/libstub/fdt.c
 @@ -158,6 +158,14 @@ static efi_status_t update_fdt(efi_syste
  			return efi_status;
  		}
@@ -107,10 +107,10 @@ Index: linux-4.14/drivers/firmware/efi/libstub/fdt.c
  	return EFI_SUCCESS;
  
  fdt_set_fail:
-Index: linux-4.14/include/linux/efi.h
+Index: rpk-4.14/include/linux/efi.h
 ===================================================================
---- linux-4.14.orig/include/linux/efi.h
-+++ linux-4.14/include/linux/efi.h
+--- rpk-4.14.orig/include/linux/efi.h
++++ rpk-4.14/include/linux/efi.h
 @@ -751,6 +751,7 @@ struct efi_fdt_params {
  	u32 mmap_size;
  	u32 desc_size;

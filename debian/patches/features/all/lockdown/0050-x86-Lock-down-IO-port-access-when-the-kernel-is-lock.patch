@@ -18,10 +18,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/char/mem.c       | 2 ++
  2 files changed, 4 insertions(+), 2 deletions(-)
 
-Index: linux-4.14/arch/x86/kernel/ioport.c
+Index: rpk-4.14/arch/x86/kernel/ioport.c
 ===================================================================
---- linux-4.14.orig/arch/x86/kernel/ioport.c
-+++ linux-4.14/arch/x86/kernel/ioport.c
+--- rpk-4.14.orig/arch/x86/kernel/ioport.c
++++ rpk-4.14/arch/x86/kernel/ioport.c
 @@ -31,7 +31,7 @@ asmlinkage long sys_ioperm(unsigned long
  
  	if ((from + num <= from) || (from + num > IO_BITMAP_BITS))
@@ -40,10 +40,10 @@ Index: linux-4.14/arch/x86/kernel/ioport.c
  			return -EPERM;
  	}
  	regs->flags = (regs->flags & ~X86_EFLAGS_IOPL) |
-Index: linux-4.14/drivers/char/mem.c
+Index: rpk-4.14/drivers/char/mem.c
 ===================================================================
---- linux-4.14.orig/drivers/char/mem.c
-+++ linux-4.14/drivers/char/mem.c
+--- rpk-4.14.orig/drivers/char/mem.c
++++ rpk-4.14/drivers/char/mem.c
 @@ -786,6 +786,8 @@ static loff_t memory_lseek(struct file *
  
  static int open_port(struct inode *inode, struct file *filp)

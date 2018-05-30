@@ -13,10 +13,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/power/user.c | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: linux-4.14/kernel/power/user.c
+Index: rpk-4.14/kernel/power/user.c
 ===================================================================
---- linux-4.14.orig/kernel/power/user.c
-+++ linux-4.14/kernel/power/user.c
+--- rpk-4.14.orig/kernel/power/user.c
++++ rpk-4.14/kernel/power/user.c
 @@ -52,6 +52,9 @@ static int snapshot_open(struct inode *i
  	if (!hibernation_available())
  		return -EPERM;

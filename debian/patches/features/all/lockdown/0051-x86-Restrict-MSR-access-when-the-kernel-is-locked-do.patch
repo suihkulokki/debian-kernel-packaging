@@ -14,10 +14,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  arch/x86/kernel/msr.c | 7 +++++++
  1 file changed, 7 insertions(+)
 
-Index: linux-4.14/arch/x86/kernel/msr.c
+Index: rpk-4.14/arch/x86/kernel/msr.c
 ===================================================================
---- linux-4.14.orig/arch/x86/kernel/msr.c
-+++ linux-4.14/arch/x86/kernel/msr.c
+--- rpk-4.14.orig/arch/x86/kernel/msr.c
++++ rpk-4.14/arch/x86/kernel/msr.c
 @@ -84,6 +84,9 @@ static ssize_t msr_write(struct file *fi
  	int err = 0;
  	ssize_t bytes = 0;

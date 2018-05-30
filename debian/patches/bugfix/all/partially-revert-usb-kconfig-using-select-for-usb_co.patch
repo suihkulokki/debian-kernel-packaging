@@ -14,10 +14,10 @@ Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
  drivers/usb/Kconfig | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Index: linux-4.14/drivers/usb/Kconfig
+Index: rpk-4.14/drivers/usb/Kconfig
 ===================================================================
---- linux-4.14.orig/drivers/usb/Kconfig
-+++ linux-4.14/drivers/usb/Kconfig
+--- rpk-4.14.orig/drivers/usb/Kconfig
++++ rpk-4.14/drivers/usb/Kconfig
 @@ -174,8 +174,7 @@ source "drivers/usb/typec/Kconfig"
  
  config USB_LED_TRIG

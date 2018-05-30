@@ -14,10 +14,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/power/hibernate.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: linux-4.14/kernel/power/hibernate.c
+Index: rpk-4.14/kernel/power/hibernate.c
 ===================================================================
---- linux-4.14.orig/kernel/power/hibernate.c
-+++ linux-4.14/kernel/power/hibernate.c
+--- rpk-4.14.orig/kernel/power/hibernate.c
++++ rpk-4.14/kernel/power/hibernate.c
 @@ -70,7 +70,7 @@ static const struct platform_hibernation
  
  bool hibernation_available(void)

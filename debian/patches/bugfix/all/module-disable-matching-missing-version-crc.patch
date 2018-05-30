@@ -7,10 +7,10 @@ This partly reverts commit cd3caefb4663e3811d37cc2afad3cce642d60061.
 We want to fail closed if a symbol version CRC is missing, as the
 alternative may allow subverting module signing.
 ---
-Index: linux-4.14/kernel/module.c
+Index: rpk-4.14/kernel/module.c
 ===================================================================
---- linux-4.14.orig/kernel/module.c
-+++ linux-4.14/kernel/module.c
+--- rpk-4.14.orig/kernel/module.c
++++ rpk-4.14/kernel/module.c
 @@ -1313,9 +1313,8 @@ static int check_version(const struct lo
  		goto bad_version;
  	}

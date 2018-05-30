@@ -26,10 +26,10 @@ and commit 8b3f5ac6b55f5f3f60723a58f14ec235a5b8cfe
 "gpu: host1x: Don't fail on NULL bo physical address" which depend on it.
 
 ---
-Index: linux-4.14/drivers/gpu/host1x/cdma.c
+Index: rpk-4.14/drivers/gpu/host1x/cdma.c
 ===================================================================
---- linux-4.14.orig/drivers/gpu/host1x/cdma.c
-+++ linux-4.14/drivers/gpu/host1x/cdma.c
+--- rpk-4.14.orig/drivers/gpu/host1x/cdma.c
++++ rpk-4.14/drivers/gpu/host1x/cdma.c
 @@ -51,15 +51,9 @@ static void host1x_pushbuffer_destroy(st
  	struct host1x_cdma *cdma = pb_to_cdma(pb);
  	struct host1x *host1x = cdma_to_host1x(cdma);
@@ -151,10 +151,10 @@ Index: linux-4.14/drivers/gpu/host1x/cdma.c
  }
  
  /*
-Index: linux-4.14/drivers/gpu/host1x/cdma.h
+Index: rpk-4.14/drivers/gpu/host1x/cdma.h
 ===================================================================
---- linux-4.14.orig/drivers/gpu/host1x/cdma.h
-+++ linux-4.14/drivers/gpu/host1x/cdma.h
+--- rpk-4.14.orig/drivers/gpu/host1x/cdma.h
++++ rpk-4.14/drivers/gpu/host1x/cdma.h
 @@ -43,12 +43,10 @@ struct host1x_job;
  
  struct push_buffer {
@@ -170,10 +170,10 @@ Index: linux-4.14/drivers/gpu/host1x/cdma.h
  };
  
  struct buffer_timeout {
-Index: linux-4.14/drivers/gpu/host1x/dev.c
+Index: rpk-4.14/drivers/gpu/host1x/dev.c
 ===================================================================
---- linux-4.14.orig/drivers/gpu/host1x/dev.c
-+++ linux-4.14/drivers/gpu/host1x/dev.c
+--- rpk-4.14.orig/drivers/gpu/host1x/dev.c
++++ rpk-4.14/drivers/gpu/host1x/dev.c
 @@ -27,7 +27,6 @@
  
  #define CREATE_TRACE_POINTS
@@ -251,10 +251,10 @@ Index: linux-4.14/drivers/gpu/host1x/dev.c
  	return 0;
  }
  
-Index: linux-4.14/drivers/gpu/host1x/dev.h
+Index: rpk-4.14/drivers/gpu/host1x/dev.h
 ===================================================================
---- linux-4.14.orig/drivers/gpu/host1x/dev.h
-+++ linux-4.14/drivers/gpu/host1x/dev.h
+--- rpk-4.14.orig/drivers/gpu/host1x/dev.h
++++ rpk-4.14/drivers/gpu/host1x/dev.h
 @@ -18,8 +18,6 @@
  #define HOST1X_DEV_H
  
@@ -275,10 +275,10 @@ Index: linux-4.14/drivers/gpu/host1x/dev.h
  	struct mutex intr_mutex;
  	int intr_syncpt_irq;
  
-Index: linux-4.14/drivers/gpu/host1x/hw/cdma_hw.c
+Index: rpk-4.14/drivers/gpu/host1x/hw/cdma_hw.c
 ===================================================================
---- linux-4.14.orig/drivers/gpu/host1x/hw/cdma_hw.c
-+++ linux-4.14/drivers/gpu/host1x/hw/cdma_hw.c
+--- rpk-4.14.orig/drivers/gpu/host1x/hw/cdma_hw.c
++++ rpk-4.14/drivers/gpu/host1x/hw/cdma_hw.c
 @@ -30,7 +30,7 @@
   */
  static void push_buffer_init(struct push_buffer *pb)
@@ -324,10 +324,10 @@ Index: linux-4.14/drivers/gpu/host1x/hw/cdma_hw.c
  			 HOST1X_CHANNEL_DMAEND);
  
  	/* set GET, by loading the value in PUT (then reset GET) */
-Index: linux-4.14/drivers/gpu/host1x/job.c
+Index: rpk-4.14/drivers/gpu/host1x/job.c
 ===================================================================
---- linux-4.14.orig/drivers/gpu/host1x/job.c
-+++ linux-4.14/drivers/gpu/host1x/job.c
+--- rpk-4.14.orig/drivers/gpu/host1x/job.c
++++ rpk-4.14/drivers/gpu/host1x/job.c
 @@ -178,10 +178,9 @@ static int do_waitchks(struct host1x_job
  	return 0;
  }
@@ -457,10 +457,10 @@ Index: linux-4.14/drivers/gpu/host1x/job.c
  		host1x_bo_unpin(unpin->bo, unpin->sgt);
  		host1x_bo_put(unpin->bo);
  	}
-Index: linux-4.14/drivers/gpu/host1x/job.h
+Index: rpk-4.14/drivers/gpu/host1x/job.h
 ===================================================================
---- linux-4.14.orig/drivers/gpu/host1x/job.h
-+++ linux-4.14/drivers/gpu/host1x/job.h
+--- rpk-4.14.orig/drivers/gpu/host1x/job.h
++++ rpk-4.14/drivers/gpu/host1x/job.h
 @@ -30,7 +30,6 @@ struct host1x_job_gather {
  struct host1x_job_unpin_data {
  	struct host1x_bo *bo;

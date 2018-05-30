@@ -25,10 +25,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/acpi/apei/einj.c | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: linux-4.14/drivers/acpi/apei/einj.c
+Index: rpk-4.14/drivers/acpi/apei/einj.c
 ===================================================================
---- linux-4.14.orig/drivers/acpi/apei/einj.c
-+++ linux-4.14/drivers/acpi/apei/einj.c
+--- rpk-4.14.orig/drivers/acpi/apei/einj.c
++++ rpk-4.14/drivers/acpi/apei/einj.c
 @@ -518,6 +518,9 @@ static int einj_error_inject(u32 type, u
  	int rc;
  	u64 base_addr, size;

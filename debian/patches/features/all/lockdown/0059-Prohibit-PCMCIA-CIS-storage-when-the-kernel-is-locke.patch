@@ -12,10 +12,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  drivers/pcmcia/cistpl.c | 5 +++++
  1 file changed, 5 insertions(+)
 
-Index: linux-4.14/drivers/pcmcia/cistpl.c
+Index: rpk-4.14/drivers/pcmcia/cistpl.c
 ===================================================================
---- linux-4.14.orig/drivers/pcmcia/cistpl.c
-+++ linux-4.14/drivers/pcmcia/cistpl.c
+--- rpk-4.14.orig/drivers/pcmcia/cistpl.c
++++ rpk-4.14/drivers/pcmcia/cistpl.c
 @@ -1578,6 +1578,11 @@ static ssize_t pccard_store_cis(struct f
  	struct pcmcia_socket *s;
  	int error;

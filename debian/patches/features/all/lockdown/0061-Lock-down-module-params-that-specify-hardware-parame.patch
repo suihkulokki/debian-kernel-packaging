@@ -14,10 +14,10 @@ Signed-off-by: David Howells <dhowells@redhat.com>
  kernel/params.c | 27 ++++++++++++++++++++++-----
  1 file changed, 22 insertions(+), 5 deletions(-)
 
-Index: linux-4.14/kernel/params.c
+Index: rpk-4.14/kernel/params.c
 ===================================================================
---- linux-4.14.orig/kernel/params.c
-+++ linux-4.14/kernel/params.c
+--- rpk-4.14.orig/kernel/params.c
++++ rpk-4.14/kernel/params.c
 @@ -108,13 +108,20 @@ bool parameq(const char *a, const char *
  	return parameqn(a, b, strlen(a)+1);
  }
