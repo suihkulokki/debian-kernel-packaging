@@ -3,13 +3,13 @@ flavours: parisc parisc-smp parisc64-smp
 kernel-arch: parisc
 
 [build]
-image-file: vmlinux
-# linux-signed only works for architectures in the main archive
-signed-modules: false
+image-file: arch/parisc/boot/bzImage
+# temporarily disable debug info: Required disk size exceeds our hppa buildd machines.
+debug-info: false
 
 [image]
 suggests: palo
-install-stem: vmlinux
+install-stem: vmlinuz
 
 [parisc_description]
 hardware: 32-bit PA-RISC

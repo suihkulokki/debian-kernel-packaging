@@ -7,12 +7,10 @@ We never rebuild anything in-tree when building an out-of-tree
 modules, so external modules should not depend on the recordmcount
 sources.
 
-Index: debian-kernel-packaging/scripts/Makefile.build
-===================================================================
---- debian-kernel-packaging.orig/scripts/Makefile.build
-+++ debian-kernel-packaging/scripts/Makefile.build
-@@ -249,6 +249,11 @@ cmd_record_mcount =						\
- 	fi;
+--- a/scripts/Makefile.build
++++ b/scripts/Makefile.build
+@@ -242,6 +242,11 @@ cmd_record_mcount =						\
+ endif # -record-mcount
  endif # CONFIG_FTRACE_MCOUNT_RECORD
  
 +# Don't require recordmcount source for an OOT build.
