@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 import sys
 sys.path.append("debian/lib/python")
@@ -25,7 +25,7 @@ class Gencontrol(Base):
         },
         'build': {
             'debug-info': config.SchemaItemBoolean(),
-            'signed-modules': config.SchemaItemBoolean(),
+            'signed-code': config.SchemaItemBoolean(),
             'vdso': config.SchemaItemBoolean(),
         },
         'description': {
@@ -46,7 +46,9 @@ class Gencontrol(Base):
             'headers-all': config.SchemaItemBoolean(),
             'installer': config.SchemaItemBoolean(),
             'libc-dev': config.SchemaItemBoolean(),
-            'tools': config.SchemaItemBoolean(),
+            'tools-unversioned': config.SchemaItemBoolean(),
+            'tools-versioned': config.SchemaItemBoolean(),
+            'source': config.SchemaItemBoolean(),
         }
     }
 
@@ -75,6 +77,11 @@ class Gencontrol(Base):
             'ABINAME': self.abiname_version + self.abiname_part,
             'SOURCEVERSION': self.version.complete,
         })
+        if not self.config.merge('packages').get('tools-unversioned', True):
+            makeflags['DO_TOOLS_UNVERSIONED'] = False
+        if not self.config.merge('packages').get('tools-versioned', True):
+            makeflags['DO_TOOLS_VERSIONED'] = False
+        makeflags['SOURCE_BASENAME'] = self.vars['source_basename']
 
         # Prepare to generate debian/tests/control
         self.tests_control = None
@@ -93,32 +100,22 @@ class Gencontrol(Base):
                          ['source_%s_real' % featureset])
             makefile.add('source', ['source_%s' % featureset])
 
-        triplet_enabled = []
-        for arch in iter(self.config['base', ]['arches']):
-            for featureset in self.config['base', arch].get('featuresets', ()):
-                if self.config.merge('base', None, featureset).get('enabled', True):
-                    for flavour in self.config['base', arch, featureset]['flavours']:
-                        triplet_enabled.append('%s_%s_%s' %
-                                               (arch, featureset, flavour))
-
         makeflags = makeflags.copy()
         makeflags['ALL_FEATURESETS'] = ' '.join(fs_enabled)
-        makeflags['ALL_TRIPLETS'] = ' '.join(triplet_enabled)
         if not self.config.merge('packages').get('docs', True):
             makeflags['DO_DOCS'] = False
-        if not self.config.merge('packages').get('tools', True):
-            makeflags['DO_TOOLS'] = False
+        if not self.config.merge('packages').get('source', True):
+            makeflags['DO_SOURCE'] = False
         super(Gencontrol, self).do_main_makefile(makefile, makeflags, extra)
-
-        # linux-source-$UPSTREAMVERSION will contain all kconfig files
-        makefile.add('binary-indep', deps=['setup'])
 
     def do_main_packages(self, packages, vars, makeflags, extra):
         packages.extend(self.process_packages(self.templates["control.main"], self.vars))
         if self.config.merge('packages').get('docs', True):
             packages.extend(self.process_packages(self.templates["control.docs"], self.vars))
-        if self.config.merge('packages').get('tools', True):
-            packages.extend(self.process_packages(self.templates["control.tools"], self.vars))
+        if self.config.merge('packages').get('tools-unversioned', True):
+            packages.extend(self.process_packages(self.templates["control.tools-unversioned"], self.vars))
+        if self.config.merge('packages').get('tools-versioned', True):
+            packages.extend(self.process_packages(self.templates["control.tools-versioned"], self.vars))
 
         self._substitute_file('perf.lintian-overrides', self.vars,
                               'debian/linux-perf-%s.lintian-overrides' %
@@ -177,6 +174,8 @@ class Gencontrol(Base):
             makeflags['ABINAME'] = vars['abiname'] = \
                 self.abiname_version + abiname_part
 
+        build_signed = self.config.merge('build', arch).get('signed-code', False)
+
         # Some userland architectures require kernels from another
         # (Debian) architecture, e.g. x32/amd64.
         # And some derivatives don't need the headers-all packages
@@ -197,17 +196,23 @@ class Gencontrol(Base):
         else:
             makeflags['DO_LIBC'] = False
 
-        if not self.config.merge('packages').get('tools', True):
-            makeflags['DO_TOOLS'] = False
-
-
         merge_packages(packages, packages_headers_arch, arch)
+
+        if (self.config['base', arch].get('featuresets') and
+            self.config.merge('packages').get('source', True)):
+            merge_packages(packages,
+                           self.process_packages(
+                               self.templates["control.config"], vars),
+                           arch)
+        else:
+            makeflags['DO_CONFIG'] = False
 
         cmds_build_arch = ["$(MAKE) -f debian/rules.real build-arch-arch %s" % makeflags]
         makefile.add('build-arch_%s_real' % arch, cmds=cmds_build_arch)
 
         cmds_binary_arch = ["$(MAKE) -f debian/rules.real binary-arch-arch %s" % makeflags]
-        makefile.add('binary-arch_%s_real' % arch, cmds=cmds_binary_arch)
+        makefile.add('binary-arch_%s_real' % arch, cmds=cmds_binary_arch,
+                     deps=['setup_%s' % arch])
 
         # For stage1 build profile
         makefile.add('binary-libc-dev_%s' % arch,
@@ -226,11 +231,6 @@ class Gencontrol(Base):
             installer_def_dir = 'debian/installer'
             installer_arch_dir = os.path.join(installer_def_dir, arch)
             if os.path.isdir(installer_arch_dir):
-                # If we're going to build signed udebs later, don't actually
-                # generate udebs.  Just test that we *can* build, so we find
-                # configuration errors before building linux-signed.
-                test_build = self.config.merge('build', arch).get('signed-modules', False)
-
                 kw_env = os.environ.copy()
                 kw_env['KW_DEFCONFIG_DIR'] = installer_def_dir
                 kw_env['KW_CONFIG_DIR'] = installer_arch_dir
@@ -247,12 +247,22 @@ class Gencontrol(Base):
                     raise RuntimeError('kernel-wedge exited with code %d' %
                                        kw_proc.returncode)
 
+                # If we're going to build signed udebs later, don't actually
+                # generate udebs.  Just test that we *can* build, so we find
+                # configuration errors before building linux-signed.
+
                 # kernel-wedge currently chokes on Build-Profiles so add it now
                 for package in udeb_packages:
-                    package['Build-Profiles'] = '<!stage1>'
+                    if build_signed:
+                        # XXX This is a hack to exclude the udebs from
+                        # the package list while still being able to
+                        # convince debhelper and kernel-wedge to go
+                        # part way to building them.
+                        package['Build-Profiles'] = '<pkg.linux.udeb-unsigned-test-build>'
+                    else:
+                        package['Build-Profiles'] = '<!stage1>'
 
-                if not test_build:
-                    merge_packages(packages, udeb_packages, arch)
+                merge_packages(packages, udeb_packages, arch)
 
                 # These packages must be built after the per-flavour/
                 # per-featureset packages.  Also, this won't work
@@ -264,7 +274,19 @@ class Gencontrol(Base):
                               "PACKAGE_NAMES='%s' UDEB_UNSIGNED_TEST_BUILD=%s" %
                               (arch, makeflags,
                                ' '.join(p['Package'] for p in udeb_packages),
-                               test_build)])
+                               build_signed)])
+
+        # This also needs to be built after the per-flavour/per-featureset
+        # packages.
+        if build_signed:
+            merge_packages(packages,
+                           self.process_packages(
+                               self.templates['control.signed-template'], vars),
+                           arch)
+            makefile.add(
+                'binary-arch_%s' % arch,
+                cmds=["$(MAKE) -f debian/rules.real install-signed-template_%s %s" %
+                      (arch, makeflags)])
 
     def do_featureset_setup(self, vars, makeflags, arch, featureset, extra):
         config_base = self.config.merge('base', arch, featureset)
@@ -272,6 +294,7 @@ class Gencontrol(Base):
 
     flavour_makeflags_base = (
         ('compiler', 'COMPILER', False),
+        ('compiler-filename', 'COMPILER', True),
         ('kernel-arch', 'KERNEL_ARCH', False),
         ('cflags', 'CFLAGS_KERNEL', True),
         ('override-host-type', 'OVERRIDE_HOST_TYPE', True),
@@ -340,7 +363,7 @@ class Gencontrol(Base):
         for group in relations_compiler_build_dep:
             for item in group:
                 item.arches = [arch]
-        packages['source']['Build-Depends'].extend(relations_compiler_build_dep)
+        packages['source']['Build-Depends-Arch'].extend(relations_compiler_build_dep)
 
         image_fields = {'Description': PackageDescription()}
         for field in 'Depends', 'Provides', 'Suggests', 'Recommends', 'Conflicts', 'Breaks':
@@ -386,7 +409,7 @@ class Gencontrol(Base):
         packages_dummy = []
         packages_own = []
 
-        build_signed = config_entry_build.get('signed-modules')
+        build_signed = config_entry_build.get('signed-code')
 
         image = self.templates[build_signed and "control.image-unsigned"
                                or "control.image"]
@@ -527,6 +550,7 @@ class Gencontrol(Base):
         self.vars = {
             'upstreamversion': self.version.linux_upstream,
             'version': self.version.linux_version,
+            'source_basename': re.sub(r'-[\d.]+$', '', self.changelog[0].source),
             'source_upstream': self.version.upstream,
             'source_package': self.changelog[0].source,
             'abiname': self.abiname_version + self.abiname_part,
@@ -547,8 +571,7 @@ class Gencontrol(Base):
             if not version.linux_revision_experimental:
                 raise RuntimeError("Can't upload to %s with a version of %s" % (distribution, version))
         if distribution.endswith('-security') or distribution.endswith('-lts'):
-            if (not version.linux_revision_security or
-                version.linux_revision_backports):
+            if version.linux_revision_backports or version.linux_revision_other:
                 raise RuntimeError("Can't upload to %s with a version of %s" % (distribution, version))
         if distribution.endswith('-backports'):
             if not version.linux_revision_backports:

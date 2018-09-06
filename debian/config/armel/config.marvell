@@ -2,10 +2,7 @@
 ## file: arch/Kconfig
 ##
 # CONFIG_KPROBES is not set
-## choice: Stack Protector buffer overflow detection
-CONFIG_CC_STACKPROTECTOR_REGULAR=y
-# CONFIG_CC_STACKPROTECTOR_STRONG is not set
-## end choice
+# CONFIG_STACKPROTECTOR_STRONG is not set
 # CONFIG_STRICT_KERNEL_RWX is not set
 
 ##
@@ -87,6 +84,11 @@ CONFIG_ARM_THUMB=y
 # CONFIG_CPU_DCACHE_WRITETHROUGH is not set
 
 ##
+## file: block/Kconfig
+##
+# CONFIG_BLK_SED_OPAL is not set
+
+##
 ## file: block/Kconfig.iosched
 ##
 CONFIG_IOSCHED_DEADLINE=m
@@ -120,6 +122,8 @@ CONFIG_SUN_PARTITION=y
 ## file: crypto/Kconfig
 ##
 # CONFIG_CRYPTO_FIPS is not set
+#. Saves about 95K
+CONFIG_CRYPTO_MANAGER_DISABLE_TESTS=y
 CONFIG_CRYPTO_SHA256=m
 
 ##
@@ -182,7 +186,7 @@ CONFIG_SATA_MV=m
 # CONFIG_ATA_GENERIC is not set
 
 ##
-## file: drivers/base/Kconfig
+## file: drivers/base/firmware_loader/Kconfig
 ##
 CONFIG_FW_LOADER=m
 
@@ -334,6 +338,11 @@ CONFIG_LEDS_TRIGGER_TIMER=y
 CONFIG_LEDS_TRIGGER_DEFAULT_ON=y
 
 ##
+## file: drivers/md/Kconfig
+##
+# CONFIG_DM_INTEGRITY is not set
+
+##
 ## file: drivers/mmc/Kconfig
 ##
 CONFIG_MMC=m
@@ -351,9 +360,9 @@ CONFIG_MMC_MVSDIO=m
 ##
 ## file: drivers/mtd/Kconfig
 ##
-CONFIG_MTD=y
+CONFIG_MTD=m
 # CONFIG_MTD_REDBOOT_PARTS is not set
-CONFIG_MTD_CMDLINE_PARTS=y
+CONFIG_MTD_CMDLINE_PARTS=m
 # CONFIG_MTD_AFS_PARTS is not set
 CONFIG_MTD_OF_PARTS=m
 CONFIG_MTD_BLOCK=m
@@ -416,17 +425,17 @@ CONFIG_MTD_PHYSMAP_OF=m
 # CONFIG_MTD_PLATRAM is not set
 
 ##
-## file: drivers/mtd/nand/Kconfig
+## file: drivers/mtd/nand/onenand/Kconfig
+##
+# CONFIG_MTD_ONENAND is not set
+
+##
+## file: drivers/mtd/nand/raw/Kconfig
 ##
 CONFIG_MTD_NAND=m
 # CONFIG_MTD_NAND_DISKONCHIP is not set
 # CONFIG_MTD_NAND_CAFE is not set
 CONFIG_MTD_NAND_ORION=m
-
-##
-## file: drivers/mtd/onenand/Kconfig
-##
-# CONFIG_MTD_ONENAND is not set
 
 ##
 ## file: drivers/mtd/spi-nor/Kconfig
@@ -508,21 +517,17 @@ CONFIG_MWIFIEX=m
 CONFIG_MWIFIEX_SDIO=m
 
 ##
-## file: drivers/pci/host/Kconfig
+## file: drivers/pci/controller/Kconfig
 ##
 CONFIG_PCI_MVEBU=y
 
 ##
 ## file: drivers/pci/pcie/Kconfig
 ##
+# CONFIG_PCIEAER is not set
 # CONFIG_PCIEASPM is not set
 # CONFIG_PCIE_DPC is not set
 # CONFIG_PCIE_PTM is not set
-
-##
-## file: drivers/pci/pcie/aer/Kconfig
-##
-# CONFIG_PCIEAER is not set
 
 ##
 ## file: drivers/pcmcia/Kconfig
@@ -552,7 +557,7 @@ CONFIG_RTC_DRV_RS5C372=m
 CONFIG_RTC_DRV_PCF8563=m
 CONFIG_RTC_DRV_M41T80=m
 CONFIG_RTC_DRV_S35390A=m
-CONFIG_RTC_DRV_MV=y
+CONFIG_RTC_DRV_MV=m
 
 ##
 ## file: drivers/scsi/Kconfig
@@ -564,7 +569,6 @@ CONFIG_RTC_DRV_MV=y
 # CONFIG_SCSI_ARCMSR is not set
 # CONFIG_SCSI_HPTIOP is not set
 # CONFIG_SCSI_DMX3191D is not set
-# CONFIG_SCSI_FUTURE_DOMAIN is not set
 # CONFIG_SCSI_IPS is not set
 # CONFIG_SCSI_INITIO is not set
 # CONFIG_SCSI_INIA100 is not set
@@ -616,7 +620,7 @@ CONFIG_RTC_DRV_MV=y
 ##
 ## file: drivers/spi/Kconfig
 ##
-CONFIG_SPI_ORION=y
+CONFIG_SPI_ORION=m
 
 ##
 ## file: drivers/ssb/Kconfig
@@ -633,6 +637,11 @@ CONFIG_FB_XGI=m
 ##
 CONFIG_THERMAL=m
 CONFIG_KIRKWOOD_THERMAL=m
+
+##
+## file: drivers/tty/Kconfig
+##
+# CONFIG_VT is not set
 
 ##
 ## file: drivers/tty/serial/8250/Kconfig
@@ -766,6 +775,7 @@ CONFIG_FLATMEM_MANUAL=y
 #. Saves about 7K
 # CONFIG_COMPACTION is not set
 # CONFIG_KSM is not set
+# CONFIG_ZSWAP is not set
 
 ##
 ## file: mm/Kconfig.debug
@@ -846,6 +856,8 @@ CONFIG_SND_KIRKWOOD_SOC=m
 ##
 ## file: usr/Kconfig
 ##
+# CONFIG_RD_BZIP2 is not set
+# CONFIG_RD_LZMA is not set
 # CONFIG_RD_LZO is not set
 # CONFIG_RD_LZ4 is not set
 

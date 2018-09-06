@@ -9,11 +9,9 @@ security restrictions that block bpf().
 
 Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
 ---
-Index: debian-kernel-packaging/tools/build/feature/test-bpf.c
-===================================================================
---- debian-kernel-packaging.orig/tools/build/feature/test-bpf.c
-+++ debian-kernel-packaging/tools/build/feature/test-bpf.c
-@@ -34,9 +34,5 @@ int main(void)
+--- a/tools/build/feature/test-bpf.c
++++ b/tools/build/feature/test-bpf.c
+@@ -31,9 +31,5 @@ int main(void)
  	attr.kern_version = 0;
  	attr.prog_flags = 0;
  

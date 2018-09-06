@@ -18,10 +18,10 @@ cc: linux-efi@vger.kernel.org
  security/lock_down.c    |  1 +
  3 files changed, 19 insertions(+), 2 deletions(-)
 
-Index: debian-kernel-packaging/arch/x86/kernel/setup.c
-===================================================================
---- debian-kernel-packaging.orig/arch/x86/kernel/setup.c
-+++ debian-kernel-packaging/arch/x86/kernel/setup.c
+diff --git a/arch/x86/kernel/setup.c b/arch/x86/kernel/setup.c
+index 7c2162f9e769..4e38327efb2e 100644
+--- a/arch/x86/kernel/setup.c
++++ b/arch/x86/kernel/setup.c
 @@ -64,6 +64,7 @@
  #include <linux/dma-mapping.h>
  #include <linux/ctype.h>
@@ -30,7 +30,7 @@ Index: debian-kernel-packaging/arch/x86/kernel/setup.c
  
  #include <linux/percpu.h>
  #include <linux/crash_dump.h>
-@@ -997,6 +998,9 @@ void __init setup_arch(char **cmdline_p)
+@@ -1039,6 +1040,9 @@ void __init setup_arch(char **cmdline_p)
  	if (efi_enabled(EFI_BOOT))
  		efi_init();
  
@@ -40,7 +40,7 @@ Index: debian-kernel-packaging/arch/x86/kernel/setup.c
  	dmi_scan_machine();
  	dmi_memdev_walk();
  	dmi_set_dump_stack_arch_desc();
-@@ -1150,8 +1154,6 @@ void __init setup_arch(char **cmdline_p)
+@@ -1197,8 +1201,6 @@ void __init setup_arch(char **cmdline_p)
  	/* Allocate bigger log buffer */
  	setup_log_buf(1);
  
@@ -49,11 +49,11 @@ Index: debian-kernel-packaging/arch/x86/kernel/setup.c
  	reserve_initrd();
  
  	acpi_table_upgrade();
-Index: debian-kernel-packaging/security/Kconfig
-===================================================================
---- debian-kernel-packaging.orig/security/Kconfig
-+++ debian-kernel-packaging/security/Kconfig
-@@ -257,6 +257,20 @@ config ALLOW_LOCKDOWN_LIFT_BY_SYSRQ
+diff --git a/security/Kconfig b/security/Kconfig
+index 1e997be94ba2..a4fa8b826039 100644
+--- a/security/Kconfig
++++ b/security/Kconfig
+@@ -222,6 +222,20 @@ config ALLOW_LOCKDOWN_LIFT_BY_SYSRQ
  	  Allow the lockdown on a kernel to be lifted, by pressing a SysRq key
  	  combination on a wired keyboard.
  
@@ -74,10 +74,10 @@ Index: debian-kernel-packaging/security/Kconfig
  
  source security/selinux/Kconfig
  source security/smack/Kconfig
-Index: debian-kernel-packaging/security/lock_down.c
-===================================================================
---- debian-kernel-packaging.orig/security/lock_down.c
-+++ debian-kernel-packaging/security/lock_down.c
+diff --git a/security/lock_down.c b/security/lock_down.c
+index 2c6b00f0c229..527f7e51dc8d 100644
+--- a/security/lock_down.c
++++ b/security/lock_down.c
 @@ -12,6 +12,7 @@
  #include <linux/security.h>
  #include <linux/export.h>
