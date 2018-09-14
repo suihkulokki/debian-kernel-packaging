@@ -91,11 +91,6 @@ CONFIG_ACPI_APEI_EINJ=m
 CONFIG_ACPI_NFIT=y
 
 ##
-## file: drivers/android/Kconfig
-##
-CONFIG_ANDROID=y
-
-##
 ## file: drivers/ata/Kconfig
 ##
 CONFIG_SATA_AHCI_PLATFORM=m
@@ -1213,6 +1208,11 @@ CONFIG_BT_LEDS=y
 ## file: net/dsa/Kconfig
 ##
 CONFIG_NET_DSA=m
+
+##
+## file: security/Kconfig
+##
+CONFIG_HARDENED_USERCOPY_FALLBACK=y
 
 ##
 ## file: sound/pci/hda/Kconfig
