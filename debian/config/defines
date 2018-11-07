@@ -26,6 +26,7 @@ ignore-changes:
  module:drivers/iio/**
  module:drivers/misc/cxl/*
  module:drivers/mtd/nand/*
+ module:drivers/net/ethernet/**
  module:drivers/net/wireless/**
  module:drivers/nvdimm/*
  module:drivers/power/supply/bq27xxx_battery
@@ -117,8 +118,8 @@ featuresets:
 
 [build]
 debug-info: true
-# Disable module signing for now
-signed-modules: false
+# Disable code signing by default; this can be overridden per-architecture
+signed-code: false
 
 [featureset-rt_base]
 enabled: false

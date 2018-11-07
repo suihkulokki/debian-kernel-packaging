@@ -512,11 +512,6 @@ CONFIG_DRM_AMD_ACP=y
 CONFIG_HSA_AMD=m
 
 ##
-## file: drivers/gpu/drm/amd/display/Kconfig
-##
-CONFIG_DRM_AMD_DC_DCN1_0=y
-
-##
 ## file: drivers/gpu/drm/ast/Kconfig
 ##
 CONFIG_DRM_AST=m
@@ -1330,6 +1325,11 @@ CONFIG_TCIC=m
 # CONFIG_PCMCIA_DEBUG is not set
 
 ##
+## file: drivers/pinctrl/Kconfig
+##
+CONFIG_PINCTRL_AMD=y
+
+##
 ## file: drivers/pinctrl/intel/Kconfig
 ##
 CONFIG_PINCTRL_BAYTRAIL=y
@@ -1513,7 +1513,6 @@ CONFIG_COMEDI_MISC_DRIVERS=y
 CONFIG_COMEDI_BOND=m
 CONFIG_COMEDI_TEST=m
 CONFIG_COMEDI_PARPORT=m
-CONFIG_COMEDI_SERIAL2002=m
 CONFIG_COMEDI_SSV_DNP=m
 # CONFIG_COMEDI_ISA_DRIVERS is not set
 CONFIG_COMEDI_II_PCI20KC=m
@@ -1622,6 +1621,11 @@ CONFIG_RTL8192U=m
 ## file: drivers/staging/rtl8723bs/Kconfig
 ##
 CONFIG_RTL8723BS=m
+
+##
+## file: drivers/staging/rtlwifi/Kconfig
+##
+CONFIG_R8822BE=m
 
 ##
 ## file: drivers/staging/rts5208/Kconfig
@@ -1739,6 +1743,7 @@ CONFIG_USB_SL811_CS=m
 ##
 CONFIG_TYPEC=m
 CONFIG_TYPEC_TCPM=m
+CONFIG_TYPEC_TPS6598X=m
 
 ##
 ## file: drivers/usb/typec/fusb302/Kconfig
